@@ -1,3 +1,4 @@
+
 #include "app.hpp"
 
 // std
@@ -5,14 +6,15 @@
 #include <iostream>
 #include <stdexcept>
 
-int main(){
-    ve::app app1{};
+int main() {
+  lve::FirstApp app{};
 
   try {
-    app1.run();
+    app.run();
   } catch (const std::exception &e) {
     std::cerr << e.what() << '\n';
     return EXIT_FAILURE;
   }
+
   return EXIT_SUCCESS;
-} 
+}

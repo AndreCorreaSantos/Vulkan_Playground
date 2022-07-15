@@ -2,24 +2,28 @@
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
+
 #include <string>
+namespace lve {
 
-namespace ve{
-    class Window{
-        public:
-            Window(int w, int h,std::string name );
-            ~Window();
-            bool shouldClose() { return glfwWindowShouldClose(window); }
-              void createWindowSurface(VkInstance instance, VkSurfaceKHR *surface);
-        private:
+class LveWindow {
+ public:
+  LveWindow(int w, int h, std::string name);
+  ~LveWindow();
 
-            void initWindow();
-            const int width;
-            const int height;
+  LveWindow(const LveWindow &) = delete;
+  LveWindow &operator=(const LveWindow &) = delete;
 
-            std::string windowName;
+  bool shouldClose() { return glfwWindowShouldClose(window); }
 
-            GLFWwindow *window;
+  void createWindowSurface(VkInstance instance, VkSurfaceKHR *surface);
+ private:
+  void initWindow();
 
-    };
-}
+  const int width;
+  const int height;
+
+  std::string windowName;
+  GLFWwindow *window;
+};
+}  // namespace lve

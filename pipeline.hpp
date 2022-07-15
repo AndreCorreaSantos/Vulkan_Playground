@@ -1,40 +1,40 @@
 #pragma once
-
-#include "device.hpp"
-
+#include "lve_device.hpp"
 #include <string>
 #include <vector>
-namespace ve{
 
-    struct PipelineConfigInfo{};
-    
-    class Pipeline{
-        public:
-            Pipeline(
-                Device &device, 
-                const std::string& vertFilepath, 
-                const std::string& fragFilepath, 
-                const PipelineConfigInfo& configInfo);
-            ~Pipeline();
+namespace lve {
 
-            Pipeline(const Pipeline&) = delete;
-            void operator=(const Pipeline&) = delete;
+  struct PipelineConfigInfo{
 
-            static PipelineConfigInfo defaultPipelineConfigInfo(uint32_t width, uint32_t height);
-        private:
+  };
 
-        static std::vector<char> readFile(const std::string& filepath);
+class LvePipeline {
+ public:
+  LvePipeline(
+    LveDevice& device, 
+    const std::string& vertFilepath, 
+    const std::string& fragFilepath,
+    const PipelineConfigInfo& configInfo );
+  ~LvePipeline() {}
 
-        void createGraphicsPipeline(
-            const std::string& vertFilepath, 
-            const std::string& fragFilepath,
-            const PipelineConfigInfo& configInfo);
+  LvePipeline(const LvePipeline&) = delete;
+  void operator =(const LvePipeline&) = delete;
 
-        void createShaderModule(const std::vector<char>& code, VkShaderModule* shaderModule);
+  static PipelineConfigInfo defaultPipelineConfigInfo(uint32_t width, uint32_t height);
+ private:
+  static std::vector<char> readFile(const std::string& filepath);
 
-        Device& device;
-        VkPipeline graphicsPipeline;
-        VkShaderModule vertShaderModule;
-        VkShaderModule fragShaderModule;
-    };
-}
+  void createGraphicsPipeline(
+    const std::string& vertFilepath, 
+    const std::string& fragFilepath, 
+    const PipelineConfigInfo& configInfo);
+
+    void createShaderModule(const std::vector<char>& code, VkShaderModule* shaderModule);
+
+  LveDevice& lveDevice;
+  VkPipeline graphicsPipeline;
+  VkShaderModule vertShaderModule;
+  VkShaderModule fragShaderModule;
+};
+}  // namespace lve

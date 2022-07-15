@@ -1,23 +1,20 @@
 #pragma once
 
-#include "window.hpp"
 #include "pipeline.hpp"
-#include "device.hpp"
-namespace ve{
-class app{
+#include "window.hpp"
+#include "lve_device.hpp"
+namespace lve {
+class FirstApp {
+ public:
+  static constexpr int WIDTH = 800;
+  static constexpr int HEIGHT = 600;
 
-    public:
-        static constexpr int WIDTH = 800;
-        static constexpr int HEIGHT = 600;
+  void run();
 
-        void run();
-    private:
-        Window window{WIDTH,HEIGHT,"L-systems"};
-        Device device{window};
-        Pipeline pipeline{
-            device,
-            "shaders/simple_shader.vert.spv",
-            "shaders/simple_shader.frag.spv",
-            Pipeline::defaultPipelineConfigInfo(WIDTH, HEIGHT)};
- };
-}
+ private:
+  LveWindow lveWindow{WIDTH, HEIGHT, "Hello Vulkan!"};
+  LveDevice lveDevice{lveWindow};
+  LvePipeline lvePipeline{lveDevice, "shaders/vert.spv", "shaders/frag.spv",LvePipeline::defaultPipelineConfigInfo(WIDTH,HEIGHT)};
+};
+
+}  // namespace lve
