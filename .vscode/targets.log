@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 15 15:55:43 2022
+# Make data base, printed on Sat Jul 16 13:15:09 2022
 
 # Variables
 
@@ -45,7 +47,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:48833
+JOURNAL_STREAM = 8:67793
 # makefile (from 'Makefile', line 1)
 CFLAGS = -std=c++17 -O2
 # environment
@@ -75,7 +77,7 @@ LC_CTYPE = pt_BR.UTF-8
 # environment
 ROS_PACKAGE_PATH = /home/borg/catkin_ws/src:/opt/ros/noetic/share
 # environment
-MANAGERPID = 1754
+MANAGERPID = 2664
 # environment
 TURTLEBOT3_MODEL = burger
 # environment
@@ -99,7 +101,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxdxegedabagacad
 # environment
-SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/1947,unix/borg:/tmp/.ICE-unix/1947
+SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/3364,unix/borg:/tmp/.ICE-unix/3364
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -109,7 +111,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 992e8dbc93e6442b953010b961cf74ea
+INVOCATION_ID = 073f025749904c9f82df13ce21281aa3
 # makefile (from 'Makefile', line 2)
 LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 # default
@@ -142,7 +144,7 @@ OSH = /home/borg/.oh-my-bash
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1899
+SSH_AGENT_PID = 3147
 # environment
 PKG_CONFIG_PATH = /home/borg/catkin_ws/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig:/opt/ros/noetic/lib/x86_64-linux-gnu/pkgconfig
 # environment
@@ -236,8 +238,6 @@ GDK_BACKEND = x11
 # environment
 LC_PAPER = pt_BR.UTF-8
 # environment
-NO_AT_BRIDGE = 1
-# environment
 QT_ACCESSIBILITY = 1
 # default
 MAKEFILES := 
@@ -254,11 +254,11 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/953babde_e6b2_484e_afe9_8d50d12fd5e6
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/2c3c8c21_e2d8_4e13_bac3_e20122e93d10
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.1266
+GNOME_TERMINAL_SERVICE = :1.87
 # default
 SUFFIXES := 
 # environment
@@ -282,12 +282,10 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 42155
+VSCODE_PID = 9647
 # variable set hash-table stats:
  
-make: *** No rule to make target 'all'.  Stop.
-
-# Load=135/1024=13%, Rehash=0, Collisions=17/160=11%
+# Load=134/1024=13%, Rehash=0, Collisions=17/159=11%
 
 # Pattern-specific Variable Values
 
@@ -421,6 +419,6 @@ lve_device.cpp:
 # strcache performance: lookups = 46 / hit rate = 45%
 # hash-table stats:
 # Load=25/8192=0%, Rehash=0, Collisions=1/46=2%
-# Finished Make data base on Fri Jul 15 15:55:43 2022
+# Finished Make data base on Sat Jul 16 13:15:09 2022
 
  

@@ -3,6 +3,7 @@
 #include "pipeline.hpp"
 #include "window.hpp"
 #include "lve_device.hpp"
+#include "lve_swap_chain.hpp"
 namespace lve {
 class FirstApp {
  public:
@@ -14,6 +15,7 @@ class FirstApp {
  private:
   LveWindow lveWindow{WIDTH, HEIGHT, "Hello Vulkan!"};
   LveDevice lveDevice{lveWindow};
+  LveSwapChain lveSwapChain{lveDevice, lveWindow.getExtent()};
   LvePipeline lvePipeline{lveDevice, "shaders/vert.spv", "shaders/frag.spv",LvePipeline::defaultPipelineConfigInfo(WIDTH,HEIGHT)};
 };
 

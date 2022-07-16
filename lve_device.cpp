@@ -118,7 +118,7 @@ void LveDevice::pickPhysicalDevice() {
   std::vector<VkPhysicalDevice> devices(deviceCount);
   vkEnumeratePhysicalDevices(instance, &deviceCount, devices.data());
 
-  for (const auto &device : devices) {
+  for (const auto &device : devices) { //picks first suitable physical device.
     if (isDeviceSuitable(device)) {
       physicalDevice = device;
       break;
