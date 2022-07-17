@@ -22,9 +22,14 @@ void FirstApp::run() {
 }
 void FirstApp::loadModels() {
   std::vector<LveModel::Vertex> vertices{
-      {{0.0f, -0.5f}}, 
-      {{0.5f, 0.5f}}, 
-      {{-0.5f, 0.5f}}};
+      {{0.0f, -0.1f}}, 
+      {{0.1f, 0.1f}}, 
+      {{-0.1f, 0.1f}},
+
+      {{0.1f, -0.1f}}, 
+      {{0.2f, 0.1f}}, 
+      {{0.1f, 0.1f}}
+      };
   lveModel = std::make_unique<LveModel>(lveDevice, vertices);
 }
 void FirstApp::createPipelineLayout() {

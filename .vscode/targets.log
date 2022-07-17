@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul 16 21:04:31 2022
+# Make data base, printed on Sun Jul 17 15:52:26 2022
 
 # Variables
 
@@ -47,7 +47,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:46377
+JOURNAL_STREAM = 8:59475
 # makefile (from 'Makefile', line 1)
 CFLAGS = -std=c++17 -O2
 # environment
@@ -77,7 +77,7 @@ LC_CTYPE = pt_BR.UTF-8
 # environment
 ROS_PACKAGE_PATH = /home/borg/catkin_ws/src:/opt/ros/noetic/share
 # environment
-MANAGERPID = 1913
+MANAGERPID = 1851
 # environment
 TURTLEBOT3_MODEL = burger
 # environment
@@ -101,7 +101,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxdxegedabagacad
 # environment
-SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2109,unix/borg:/tmp/.ICE-unix/2109
+SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2046,unix/borg:/tmp/.ICE-unix/2046
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -111,7 +111,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = ce4e31cb5d37468ba5fa49b986465211
+INVOCATION_ID = e575bb51f6d54ea3bb01e43d3eaa4045
 # makefile (from 'Makefile', line 2)
 LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 # default
@@ -144,7 +144,7 @@ OSH = /home/borg/.oh-my-bash
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2060
+SSH_AGENT_PID = 1995
 # environment
 PKG_CONFIG_PATH = /home/borg/catkin_ws/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig:/opt/ros/noetic/lib/x86_64-linux-gnu/pkgconfig
 # environment
@@ -210,7 +210,7 @@ LC_TELEPHONE = pt_BR.UTF-8
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/borg/Desktop
+OLDPWD = /home/borg
 # default
 .VARIABLES := 
 # automatic
@@ -254,11 +254,11 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/a6b69495_6c0c_407b_b816_9f4e11182bfd
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/84c97ba3_f1a1_4b8c_906e_95c7dcf32de3
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.99
+GNOME_TERMINAL_SERVICE = :1.85
 # default
 SUFFIXES := 
 # environment
@@ -282,8 +282,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 4622
+VSCODE_PID = 4006
 # variable set hash-table stats:
+ 
 # Load=134/1024=13%, Rehash=0, Collisions=17/159=11%
 
 # Pattern-specific Variable Values
@@ -291,11 +292,10 @@ VSCODE_PID = 4622
 # No pattern-specific variable values.
 
 # Directories
- 
 
-# . (device 2049, inode 1163983): 19 files, no impossibilities.
+# . (device 2049, inode 1163983): 21 files, no impossibilities.
 
-# 19 files, no impossibilities in 1 directories.
+# 21 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -322,7 +322,7 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
-VulkanEngine: pipeline.cpp lve_device.cpp window.cpp main.cpp app.cpp lve_swap_chain.cpp pipeline.hpp lve_device.hpp window.hpp app.hpp lve_swap_chain.hpp
+VulkanEngine: pipeline.cpp lve_device.cpp model.cpp window.cpp main.cpp app.cpp lve_swap_chain.cpp pipeline.hpp lve_device.hpp model.hpp window.hpp app.hpp lve_swap_chain.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -356,18 +356,22 @@ main.cpp:
 #  File has not been updated.
 
 # Not a target:
+model.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-clean:
-#  Phony target (prerequisite of .PHONY).
+# Not a target:
+model.hpp:
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 13):
-	rm -f VulkanEngine
 
 # Not a target:
 pipeline.cpp:
@@ -417,20 +421,28 @@ lve_device.cpp:
 #  Modification time never checked.
 #  File has not been updated.
 
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 13):
+	rm -f VulkanEngine
+
 # files hash-table stats:
-# Load=19/1024=2%, Rehash=0, Collisions=0/45=0%
+# Load=21/1024=2%, Rehash=0, Collisions=3/49=6%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 27 / storage = 273 B / avg = 10 B
-# current buf: size = 8162 B / used = 273 B / count = 27 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 29 / storage = 293 B / avg = 10 B
+# current buf: size = 8162 B / used = 293 B / count = 29 / avg = 10 B
 
-# strcache performance: lookups = 50 / hit rate = 46%
+# strcache performance: lookups = 54 / hit rate = 46%
 # hash-table stats:
-# Load=27/8192=0%, Rehash=0, Collisions=1/50=2%
-# Finished Make data base on Sat Jul 16 21:04:31 2022
+# Load=29/8192=0%, Rehash=0, Collisions=1/54=2%
+# Finished Make data base on Sun Jul 17 15:52:26 2022
 
  
