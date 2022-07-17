@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul 16 15:59:58 2022
+# Make data base, printed on Sat Jul 16 21:04:31 2022
 
 # Variables
 
@@ -47,7 +47,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:52675
+JOURNAL_STREAM = 8:46377
 # makefile (from 'Makefile', line 1)
 CFLAGS = -std=c++17 -O2
 # environment
@@ -77,7 +77,7 @@ LC_CTYPE = pt_BR.UTF-8
 # environment
 ROS_PACKAGE_PATH = /home/borg/catkin_ws/src:/opt/ros/noetic/share
 # environment
-MANAGERPID = 1924
+MANAGERPID = 1913
 # environment
 TURTLEBOT3_MODEL = burger
 # environment
@@ -101,7 +101,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxdxegedabagacad
 # environment
-SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2119,unix/borg:/tmp/.ICE-unix/2119
+SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2109,unix/borg:/tmp/.ICE-unix/2109
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -111,7 +111,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = c445b84012dd4c72b1266083605ac497
+INVOCATION_ID = ce4e31cb5d37468ba5fa49b986465211
 # makefile (from 'Makefile', line 2)
 LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 # default
@@ -144,7 +144,7 @@ OSH = /home/borg/.oh-my-bash
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2070
+SSH_AGENT_PID = 2060
 # environment
 PKG_CONFIG_PATH = /home/borg/catkin_ws/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig:/opt/ros/noetic/lib/x86_64-linux-gnu/pkgconfig
 # environment
@@ -254,11 +254,11 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/4e390ff9_f7b5_431e_9ed2_897758c5ed72
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/a6b69495_6c0c_407b_b816_9f4e11182bfd
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.113
+GNOME_TERMINAL_SERVICE = :1.99
 # default
 SUFFIXES := 
 # environment
@@ -282,16 +282,16 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 6281
+VSCODE_PID = 4622
 # variable set hash-table stats:
 # Load=134/1024=13%, Rehash=0, Collisions=17/159=11%
 
 # Pattern-specific Variable Values
- 
 
 # No pattern-specific variable values.
 
 # Directories
+ 
 
 # . (device 2049, inode 1163983): 19 files, no impossibilities.
 
@@ -431,6 +431,6 @@ lve_device.cpp:
 # strcache performance: lookups = 50 / hit rate = 46%
 # hash-table stats:
 # Load=27/8192=0%, Rehash=0, Collisions=1/50=2%
-# Finished Make data base on Sat Jul 16 15:59:58 2022
+# Finished Make data base on Sat Jul 16 21:04:31 2022
 
  
