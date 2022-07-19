@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 17 15:52:26 2022
+# Make data base, printed on Tue Jul 19 00:18:14 2022
 
 # Variables
 
@@ -47,7 +45,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:59475
+JOURNAL_STREAM = 8:54818
 # makefile (from 'Makefile', line 1)
 CFLAGS = -std=c++17 -O2
 # environment
@@ -77,7 +75,7 @@ LC_CTYPE = pt_BR.UTF-8
 # environment
 ROS_PACKAGE_PATH = /home/borg/catkin_ws/src:/opt/ros/noetic/share
 # environment
-MANAGERPID = 1851
+MANAGERPID = 1825
 # environment
 TURTLEBOT3_MODEL = burger
 # environment
@@ -101,7 +99,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxdxegedabagacad
 # environment
-SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2046,unix/borg:/tmp/.ICE-unix/2046
+SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2016,unix/borg:/tmp/.ICE-unix/2016
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -111,7 +109,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = e575bb51f6d54ea3bb01e43d3eaa4045
+INVOCATION_ID = ebab9308dc924bb680558523247a80cb
 # makefile (from 'Makefile', line 2)
 LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 # default
@@ -144,7 +142,7 @@ OSH = /home/borg/.oh-my-bash
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1995
+SSH_AGENT_PID = 1968
 # environment
 PKG_CONFIG_PATH = /home/borg/catkin_ws/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig:/opt/ros/noetic/lib/x86_64-linux-gnu/pkgconfig
 # environment
@@ -254,11 +252,11 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/84c97ba3_f1a1_4b8c_906e_95c7dcf32de3
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/46673ba4_6c7d_447e_8e86_05d4c3ffdb36
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.85
+GNOME_TERMINAL_SERVICE = :1.186
 # default
 SUFFIXES := 
 # environment
@@ -282,9 +280,11 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 4006
+VSCODE_PID = 6527
 # variable set hash-table stats:
  
+make: *** No rule to make target 'all'.  Stop.
+
 # Load=134/1024=13%, Rehash=0, Collisions=17/159=11%
 
 # Pattern-specific Variable Values
@@ -443,6 +443,6 @@ clean:
 # strcache performance: lookups = 54 / hit rate = 46%
 # hash-table stats:
 # Load=29/8192=0%, Rehash=0, Collisions=1/54=2%
-# Finished Make data base on Sun Jul 17 15:52:26 2022
+# Finished Make data base on Tue Jul 19 00:18:14 2022
 
  
