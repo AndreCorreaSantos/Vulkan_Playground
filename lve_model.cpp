@@ -1,4 +1,4 @@
-#include "model.hpp"
+#include "lve_model.hpp"
 
 // std
 #include <cassert>
@@ -53,14 +53,14 @@ std::vector<VkVertexInputBindingDescription> LveModel::Vertex::getBindingDescrip
 std::vector<VkVertexInputAttributeDescription> LveModel::Vertex::getAttributeDescriptions() {
   std::vector<VkVertexInputAttributeDescription> attributeDescriptions(2);
   attributeDescriptions[0].binding = 0;
-  attributeDescriptions[0].location = 0; //needs to match vertex location at vertex shader.
+  attributeDescriptions[0].location = 0;
   attributeDescriptions[0].format = VK_FORMAT_R32G32_SFLOAT;
-  attributeDescriptions[0].offset = offsetof(Vertex,position);
+  attributeDescriptions[0].offset = offsetof(Vertex, position);
 
   attributeDescriptions[1].binding = 0;
-  attributeDescriptions[1].location = 1; //needs to match color location at vertex shader
+  attributeDescriptions[1].location = 1;
   attributeDescriptions[1].format = VK_FORMAT_R32G32B32_SFLOAT;
-  attributeDescriptions[1].offset = offsetof(Vertex,color);
+  attributeDescriptions[1].offset = offsetof(Vertex, color);
   return attributeDescriptions;
 }
 

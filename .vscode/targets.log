@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jul 19 00:18:14 2022
+# Make data base, printed on Tue Jul 19 22:21:24 2022
 
 # Variables
 
@@ -45,7 +45,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:54818
+JOURNAL_STREAM = 8:55677
 # makefile (from 'Makefile', line 1)
 CFLAGS = -std=c++17 -O2
 # environment
@@ -75,7 +75,7 @@ LC_CTYPE = pt_BR.UTF-8
 # environment
 ROS_PACKAGE_PATH = /home/borg/catkin_ws/src:/opt/ros/noetic/share
 # environment
-MANAGERPID = 1825
+MANAGERPID = 1901
 # environment
 TURTLEBOT3_MODEL = burger
 # environment
@@ -99,7 +99,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxdxegedabagacad
 # environment
-SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2016,unix/borg:/tmp/.ICE-unix/2016
+SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2098,unix/borg:/tmp/.ICE-unix/2098
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -109,7 +109,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = ebab9308dc924bb680558523247a80cb
+INVOCATION_ID = 16a75f8c9c3b440099058032ff019221
 # makefile (from 'Makefile', line 2)
 LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 # default
@@ -142,7 +142,7 @@ OSH = /home/borg/.oh-my-bash
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1968
+SSH_AGENT_PID = 2047
 # environment
 PKG_CONFIG_PATH = /home/borg/catkin_ws/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig:/opt/ros/noetic/lib/x86_64-linux-gnu/pkgconfig
 # environment
@@ -160,11 +160,11 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /home/borg/.config/Code/CachedData/b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a
+VSCODE_CODE_CACHE_PATH = /home/borg/.config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
 # environment
 LOGNAME = borg
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 +F = $(notdir $+)
 # environment
@@ -218,7 +218,7 @@ LANGUAGE = en_US:en
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-67625231-1.69.1-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-67625231-1.69.2-main.sock
 # environment
 PYTHONPATH = /home/borg/catkin_ws/devel/lib/python3/dist-packages:/opt/ros/noetic/lib/python3/dist-packages:/usr/local/python:/usr/lib/python
 # makefile
@@ -252,11 +252,11 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/46673ba4_6c7d_447e_8e86_05d4c3ffdb36
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/e5d1d4d3_05aa_49c7_8c2b_dd0a58440d82
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.186
+GNOME_TERMINAL_SERVICE = :1.381
 # default
 SUFFIXES := 
 # environment
@@ -280,11 +280,8 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 6527
+VSCODE_PID = 11948
 # variable set hash-table stats:
- 
-make: *** No rule to make target 'all'.  Stop.
-
 # Load=134/1024=13%, Rehash=0, Collisions=17/159=11%
 
 # Pattern-specific Variable Values
@@ -292,6 +289,9 @@ make: *** No rule to make target 'all'.  Stop.
 # No pattern-specific variable values.
 
 # Directories
+
+ 
+make: *** No rule to make target 'all'.  Stop.
 
 # . (device 2049, inode 1163983): 21 files, no impossibilities.
 
@@ -443,6 +443,6 @@ clean:
 # strcache performance: lookups = 54 / hit rate = 46%
 # hash-table stats:
 # Load=29/8192=0%, Rehash=0, Collisions=1/54=2%
-# Finished Make data base on Tue Jul 19 00:18:14 2022
+# Finished Make data base on Tue Jul 19 22:21:24 2022
 
  
