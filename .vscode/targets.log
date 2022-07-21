@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jul 19 22:21:24 2022
+# Make data base, printed on Thu Jul 21 11:49:53 2022
 
 # Variables
 
@@ -45,7 +45,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:55677
+JOURNAL_STREAM = 8:55669
 # makefile (from 'Makefile', line 1)
 CFLAGS = -std=c++17 -O2
 # environment
@@ -99,7 +99,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxdxegedabagacad
 # environment
-SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2098,unix/borg:/tmp/.ICE-unix/2098
+SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2095,unix/borg:/tmp/.ICE-unix/2095
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -109,7 +109,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 16a75f8c9c3b440099058032ff019221
+INVOCATION_ID = cdd2700966ff46d0af27a7636eced43b
 # makefile (from 'Makefile', line 2)
 LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 # default
@@ -252,11 +252,11 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/e5d1d4d3_05aa_49c7_8c2b_dd0a58440d82
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/61fd7f74_621f_435a_ac15_2776b1b67db0
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.381
+GNOME_TERMINAL_SERVICE = :1.86
 # default
 SUFFIXES := 
 # environment
@@ -280,8 +280,11 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 11948
+VSCODE_PID = 5754
 # variable set hash-table stats:
+ 
+make: *** No rule to make target 'all'.  Stop.
+
 # Load=134/1024=13%, Rehash=0, Collisions=17/159=11%
 
 # Pattern-specific Variable Values
@@ -290,12 +293,9 @@ VSCODE_PID = 11948
 
 # Directories
 
- 
-make: *** No rule to make target 'all'.  Stop.
+# . (device 2049, inode 1163983): 25 files, no impossibilities.
 
-# . (device 2049, inode 1163983): 21 files, no impossibilities.
-
-# 21 files, no impossibilities in 1 directories.
+# 25 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -304,7 +304,7 @@ make: *** No rule to make target 'all'.  Stop.
 # Files
 
 # Not a target:
-app.hpp:
+lve_window.cpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -322,7 +322,13 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
-VulkanEngine: pipeline.cpp lve_device.cpp model.cpp window.cpp main.cpp app.cpp lve_swap_chain.cpp pipeline.hpp lve_device.hpp model.hpp window.hpp app.hpp lve_swap_chain.hpp
+# Not a target:
+lve_model.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+VulkanEngine: lve_pipeline.cpp lve_renderer.cpp lve_model.cpp lve_window.cpp lve_device.cpp first_app.cpp main.cpp lve_swap_chain.cpp lve_model.hpp lve_window.hpp lve_device.hpp lve_game_object.hpp first_app.hpp lve_swap_chain.hpp lve_pipeline.hpp lve_renderer.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -335,11 +341,41 @@ VulkanEngine: pipeline.cpp lve_device.cpp model.cpp window.cpp main.cpp app.cpp 
 #  File has not been updated.
 
 # Not a target:
+first_app.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lve_window.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lve_renderer.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lve_pipeline.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 Makefile:
 #  Implicit rule search has been done.
 #  Last modified 2022-07-15 14:16:03.262573
 #  File has been updated.
 #  Successfully updated.
+
+# Not a target:
+first_app.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 test: VulkanEngine
 #  Phony target (prerequisite of .PHONY).
@@ -350,73 +386,25 @@ test: VulkanEngine
 	./VulkanEngine
 
 # Not a target:
+lve_renderer.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 main.cpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-model.cpp:
+lve_pipeline.hpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
 .DEFAULT:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-model.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-pipeline.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-lve_swap_chain.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-window.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-pipeline.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-app.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-lve_swap_chain.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-window.hpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-lve_device.cpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -429,20 +417,50 @@ clean:
 #  recipe to execute (from 'Makefile', line 13):
 	rm -f VulkanEngine
 
+# Not a target:
+lve_swap_chain.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lve_game_object.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lve_swap_chain.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lve_device.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lve_model.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # files hash-table stats:
-# Load=21/1024=2%, Rehash=0, Collisions=3/49=6%
+# Load=24/1024=2%, Rehash=0, Collisions=0/55=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 29 / storage = 293 B / avg = 10 B
-# current buf: size = 8162 B / used = 293 B / count = 29 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 33 / storage = 393 B / avg = 11 B
+# current buf: size = 8162 B / used = 393 B / count = 33 / avg = 11 B
 
-# strcache performance: lookups = 54 / hit rate = 46%
+# strcache performance: lookups = 61 / hit rate = 45%
 # hash-table stats:
-# Load=29/8192=0%, Rehash=0, Collisions=1/54=2%
-# Finished Make data base on Tue Jul 19 22:21:24 2022
+# Load=33/8192=0%, Rehash=0, Collisions=1/61=2%
+# Finished Make data base on Thu Jul 21 11:49:53 2022
 
  
