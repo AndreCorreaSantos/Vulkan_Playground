@@ -15,7 +15,7 @@ namespace lve {
 
 struct SimplePushConstantData {
   glm::mat4 transform{1.f};
-  alignas(16) glm::vec3 color;
+  alignas(16) glm::vec3 color{};
 };
 
 SimpleRenderSystem::SimpleRenderSystem(LveDevice& device, VkRenderPass renderPass)
@@ -61,16 +61,18 @@ void SimpleRenderSystem::createPipeline(VkRenderPass renderPass) {
 }
 
 void SimpleRenderSystem::renderGameObjects(
-    VkCommandBuffer commandBuffer, std::vector<LveGameObject>& gameObjects) {
+    VkCommandBuffer commandBuffer,
+    std::vector<LveGameObject>& gameObjects,
+    const LveCamera& camera) {
   lvePipeline->bind(commandBuffer);
 
   for (auto& obj : gameObjects) {
-    obj.transform.rotation.y = glm::mod(obj.transform.rotation.y +0.01f, glm::two_pi<float>());
-    obj.transform.rotation.z = glm::mod(obj.transform.rotation.z +0.005f, glm::two_pi<float>());
-    obj.transform.rotation.x = glm::mod(obj.transform.rotation.x +0.0025f, glm::two_pi<float>());
+    obj.transform.rotation.y = glm::mod(obj.transform.rotation.y + 0.01f, glm::two_pi<float>());
+    obj.transform.rotation.x = glm::mod(obj.transform.rotation.x + 0.005f, glm::two_pi<float>());
+
     SimplePushConstantData push{};
     push.color = obj.color;
-    push.transform = obj.transform.mat4();
+    push.transform = camera.getProjection() * obj.transform.mat4();
 
     vkCmdPushConstants(
         commandBuffer,
