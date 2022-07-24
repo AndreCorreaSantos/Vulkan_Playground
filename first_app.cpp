@@ -15,6 +15,7 @@
 #include <cassert>
 #include <chrono>
 #include <stdexcept>
+#include <iostream>
 
 namespace lve {
 
@@ -57,59 +58,24 @@ void FirstApp::run() {
   vkDeviceWaitIdle(lveDevice.device());
 }
 
-// temporary helper function, creates a 1x1x1 cube centered at offset
-std::unique_ptr<LveModel> createCubeModel(LveDevice& device, glm::vec3 offset) {
-  std::vector<LveModel::Vertex> vertices{
+std::vector<LveModel::Vertex> generateMesh(int numpoints){
+  std::vector<LveModel::Vertex> vertices;
+  float scale = 0.1f;
+  float z = 0.0f;
+  for ( int u = 0; u <= numpoints; u++){
+    float x = u;
+    for (int i = 0; i <= numpoints; i++){
+      float y = i;
+      vertices.push_back({{x*scale - 2 ,z*scale,y*scale - 2},{.9f, .9f, .9f}});
+    }
+  }
+  return vertices;
+}
 
-      // left face (white)
-      {{-.5f, -.5f, -.5f}, {.9f, .9f, .9f}},
-      {{-.5f, .5f, .5f}, {.9f, .9f, .9f}},
-      {{-.5f, -.5f, .5f}, {.9f, .9f, .9f}},
-      {{-.5f, -.5f, -.5f}, {.9f, .9f, .9f}},
-      {{-.5f, .5f, -.5f}, {.9f, .9f, .9f}},
-      {{-.5f, .5f, .5f}, {.9f, .9f, .9f}},
+std::unique_ptr<LveModel> createModel(LveDevice& device, glm::vec3 offset,int numpoints) {
+  std::vector<LveModel::Vertex> vertices = generateMesh(numpoints);
 
-      // right face (yellow)
-      {{.5f, -.5f, -.5f}, {.8f, .8f, .1f}},
-      {{.5f, .5f, .5f}, {.8f, .8f, .1f}},
-      {{.5f, -.5f, .5f}, {.8f, .8f, .1f}},
-      {{.5f, -.5f, -.5f}, {.8f, .8f, .1f}},
-      {{.5f, .5f, -.5f}, {.8f, .8f, .1f}},
-      {{.5f, .5f, .5f}, {.8f, .8f, .1f}},
 
-      // top face (orange, remember y axis points down)
-      {{-.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
-      {{.5f, -.5f, .5f}, {.9f, .6f, .1f}},
-      {{-.5f, -.5f, .5f}, {.9f, .6f, .1f}},
-      {{-.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
-      {{.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
-      {{.5f, -.5f, .5f}, {.9f, .6f, .1f}},
-
-      // bottom face (red)
-      {{-.5f, .5f, -.5f}, {.8f, .1f, .1f}},
-      {{.5f, .5f, .5f}, {.8f, .1f, .1f}},
-      {{-.5f, .5f, .5f}, {.8f, .1f, .1f}},
-      {{-.5f, .5f, -.5f}, {.8f, .1f, .1f}},
-      {{.5f, .5f, -.5f}, {.8f, .1f, .1f}},
-      {{.5f, .5f, .5f}, {.8f, .1f, .1f}},
-
-      // nose face (blue)
-      {{-.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
-      {{.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
-      {{-.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
-      {{-.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
-      {{.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
-      {{.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
-
-      // tail face (green)
-      {{-.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
-      {{.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
-      {{-.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
-      {{-.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
-      {{.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
-      {{.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
-
-  };
   for (auto& v : vertices) {
     v.position += offset;
   }
@@ -117,12 +83,13 @@ std::unique_ptr<LveModel> createCubeModel(LveDevice& device, glm::vec3 offset) {
 }
 
 void FirstApp::loadGameObjects() {
-  std::shared_ptr<LveModel> lveModel = createCubeModel(lveDevice, {.0f, .0f, .0f});
-  auto cube = LveGameObject::createGameObject();
-  cube.model = lveModel;
-  cube.transform.translation = {.0f, .0f, 2.5f};
-  cube.transform.scale = {.5f, .5f, .5f};
-  gameObjects.push_back(std::move(cube));
+    int numpoints = 500;
+  std::shared_ptr<LveModel> lveModel = createModel(lveDevice, {.0f, .0f, .0f},numpoints);
+  auto object = LveGameObject::createGameObject();
+  object.model = lveModel;
+  object.transform.translation = {.0f, .0f, 2.5f};
+  object.transform.scale = {.5f, .5f, .5f};
+  gameObjects.push_back(std::move(object));
 }
 
 }  // namespace lve

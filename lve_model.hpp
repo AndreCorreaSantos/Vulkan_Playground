@@ -32,10 +32,13 @@ class LveModel {
 
  private:
   void createVertexBuffers(const std::vector<Vertex> &vertices);
-
+  void LveModel::createIndexBuffer(const std::vector<uint16_t> &indices);
   LveDevice &lveDevice;
   VkBuffer vertexBuffer;
   VkDeviceMemory vertexBufferMemory;
   uint32_t vertexCount;
+  VkBuffer indexBuffer;
+  VkDeviceMemory indexBufferMemory;
+  uint32_t indexCount;
 };
 }  // namespace lve

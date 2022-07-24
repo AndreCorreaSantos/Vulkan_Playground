@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jul 21 11:49:53 2022
+# Make data base, printed on Sun Jul 24 12:09:23 2022
 
 # Variables
 
@@ -45,7 +47,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:55669
+JOURNAL_STREAM = 8:60511
 # makefile (from 'Makefile', line 1)
 CFLAGS = -std=c++17 -O2
 # environment
@@ -75,7 +77,7 @@ LC_CTYPE = pt_BR.UTF-8
 # environment
 ROS_PACKAGE_PATH = /home/borg/catkin_ws/src:/opt/ros/noetic/share
 # environment
-MANAGERPID = 1901
+MANAGERPID = 1891
 # environment
 TURTLEBOT3_MODEL = burger
 # environment
@@ -99,7 +101,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxdxegedabagacad
 # environment
-SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2095,unix/borg:/tmp/.ICE-unix/2095
+SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2086,unix/borg:/tmp/.ICE-unix/2086
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -109,7 +111,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = cdd2700966ff46d0af27a7636eced43b
+INVOCATION_ID = fc90ab9948754fdabdff69ec7f9d89fc
 # makefile (from 'Makefile', line 2)
 LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 # default
@@ -142,7 +144,7 @@ OSH = /home/borg/.oh-my-bash
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2047
+SSH_AGENT_PID = 2037
 # environment
 PKG_CONFIG_PATH = /home/borg/catkin_ws/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig:/opt/ros/noetic/lib/x86_64-linux-gnu/pkgconfig
 # environment
@@ -164,7 +166,7 @@ VSCODE_CODE_CACHE_PATH = /home/borg/.config/Code/CachedData/3b889b090b5ad5793f52
 # environment
 LOGNAME = borg
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
 +F = $(notdir $+)
 # environment
@@ -252,11 +254,11 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/61fd7f74_621f_435a_ac15_2776b1b67db0
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/1086cf3a_000b_46df_b932_8c8eec764067
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.86
+GNOME_TERMINAL_SERVICE = :1.85
 # default
 SUFFIXES := 
 # environment
@@ -280,11 +282,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 5754
+VSCODE_PID = 4032
 # variable set hash-table stats:
  
-make: *** No rule to make target 'all'.  Stop.
-
 # Load=134/1024=13%, Rehash=0, Collisions=17/159=11%
 
 # Pattern-specific Variable Values
@@ -293,15 +293,21 @@ make: *** No rule to make target 'all'.  Stop.
 
 # Directories
 
-# . (device 2049, inode 1163983): 25 files, no impossibilities.
+# . (device 2049, inode 1163983): 33 files, no impossibilities.
 
-# 25 files, no impossibilities in 1 directories.
+# 33 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 # No implicit rules.
 
 # Files
+
+# Not a target:
+lve_camera.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 lve_window.cpp:
@@ -328,7 +334,7 @@ lve_model.hpp:
 #  Modification time never checked.
 #  File has not been updated.
 
-VulkanEngine: lve_pipeline.cpp lve_renderer.cpp lve_model.cpp lve_window.cpp lve_device.cpp first_app.cpp main.cpp lve_swap_chain.cpp lve_model.hpp lve_window.hpp lve_device.hpp lve_game_object.hpp first_app.hpp lve_swap_chain.hpp lve_pipeline.hpp lve_renderer.hpp
+VulkanEngine: lve_pipeline.cpp lve_renderer.cpp lve_model.cpp lve_window.cpp lve_device.cpp lve_camera.cpp simple_render_system.cpp keyboard_movement_controller.cpp first_app.cpp main.cpp lve_swap_chain.cpp lve_model.hpp lve_window.hpp lve_device.hpp lve_camera.hpp simple_render_system.hpp lve_game_object.hpp keyboard_movement_controller.hpp first_app.hpp lve_swap_chain.hpp lve_pipeline.hpp lve_renderer.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -342,6 +348,12 @@ VulkanEngine: lve_pipeline.cpp lve_renderer.cpp lve_model.cpp lve_window.cpp lve
 
 # Not a target:
 first_app.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lve_camera.hpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -404,6 +416,18 @@ lve_pipeline.hpp:
 #  File has not been updated.
 
 # Not a target:
+simple_render_system.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+simple_render_system.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -424,6 +448,12 @@ lve_swap_chain.cpp:
 #  File has not been updated.
 
 # Not a target:
+keyboard_movement_controller.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 lve_game_object.hpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -431,6 +461,12 @@ lve_game_object.hpp:
 
 # Not a target:
 lve_swap_chain.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+keyboard_movement_controller.hpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -448,19 +484,19 @@ lve_model.cpp:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=24/1024=2%, Rehash=0, Collisions=0/55=0%
+# Load=30/1024=3%, Rehash=0, Collisions=0/67=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 33 / storage = 393 B / avg = 11 B
-# current buf: size = 8162 B / used = 393 B / count = 33 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 41 / storage = 568 B / avg = 13 B
+# current buf: size = 8162 B / used = 568 B / count = 41 / avg = 13 B
 
-# strcache performance: lookups = 61 / hit rate = 45%
+# strcache performance: lookups = 75 / hit rate = 45%
 # hash-table stats:
-# Load=33/8192=0%, Rehash=0, Collisions=1/61=2%
-# Finished Make data base on Thu Jul 21 11:49:53 2022
+# Load=41/8192=1%, Rehash=0, Collisions=1/75=1%
+# Finished Make data base on Sun Jul 24 12:09:23 2022
 
  
