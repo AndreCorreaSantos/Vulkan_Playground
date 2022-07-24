@@ -8,11 +8,14 @@ namespace lve {
 
 LveModel::LveModel(LveDevice &device, const std::vector<Vertex> &vertices,const std::vector<uint16_t> &indices) : lveDevice{device} {
   createVertexBuffers(vertices);
+  createIndexBuffers(indices);
 }
 
 LveModel::~LveModel() {
   vkDestroyBuffer(lveDevice.device(), vertexBuffer, nullptr);
   vkFreeMemory(lveDevice.device(), vertexBufferMemory, nullptr);
+    vkDestroyBuffer(lveDevice.device(), indexBuffer, nullptr);
+    vkFreeMemory(lveDevice.device(), indexBufferMemory, nullptr);
 }
 
 void LveModel::createVertexBuffers(const std::vector<Vertex> &vertices) {
@@ -40,7 +43,7 @@ void LveModel::createVertexBuffers(const std::vector<Vertex> &vertices) {
 }
 
 
-void LveModel::createIndexBuffer(const std::vector<uint16_t> &indices) {
+void LveModel::createIndexBuffers(const std::vector<uint16_t> &indices) {
     VkDeviceSize bufferSize = sizeof(indices[0]) * indices.size();
     indexCount = static_cast<uint32_t>(indices.size());
     VkBuffer stagingBuffer;

@@ -66,10 +66,26 @@ std::vector<LveModel::Vertex> generateMesh(int numpoints){
     float x = u;
     for (int i = 0; i <= numpoints; i++){
       float y = i;
-      vertices.push_back({{x*scale - 2 ,z*scale,y*scale - 2},{.9f, .9f, .9f}});
+      vertices.push_back({{x*scale - 2 ,z,y*scale - 2},{.9f, .9f, .9f}});
     }
   }
   return vertices;
+}
+std::vector<uint16_t> generateIndices(int numpoints){
+  std::vector<uint16_t> indices;
+  for (int u =0;u<numpoints-1;u++){
+    for (int i =0;i<numpoints-1;i++){
+        int c = i*numpoints + u;
+        int r = (i+1)*numpoints + u;
+        indices.push_back(c);
+        indices.push_back(c+1);
+        indices.push_back(r);
+        indices.push_back(r);
+        indices.push_back(r+1);
+        indices.push_back(c+1);
+    }
+  }
+  return indices;
 }
 
 std::unique_ptr<LveModel> createModel(LveDevice& device, glm::vec3 offset,int numpoints) {
@@ -79,11 +95,12 @@ std::unique_ptr<LveModel> createModel(LveDevice& device, glm::vec3 offset,int nu
   for (auto& v : vertices) {
     v.position += offset;
   }
-  return std::make_unique<LveModel>(device, vertices);
+  std::vector<uint16_t> indices =  generateIndices(numpoints);
+  return std::make_unique<LveModel>(device, vertices,indices);
 }
 
 void FirstApp::loadGameObjects() {
-    int numpoints = 500;
+    int numpoints = 5;
   std::shared_ptr<LveModel> lveModel = createModel(lveDevice, {.0f, .0f, .0f},numpoints);
   auto object = LveGameObject::createGameObject();
   object.model = lveModel;
