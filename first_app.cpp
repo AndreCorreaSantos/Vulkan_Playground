@@ -15,6 +15,9 @@
 #include <cassert>
 #include <chrono>
 #include <stdexcept>
+#define DB_PERLIN_IMPL
+#include "db_perlin.hpp"
+
 
 namespace lve {
 
@@ -59,17 +62,19 @@ void FirstApp::run() {
 
 std::vector<LveModel::Vertex> generateMesh(int numpoints){
   std::vector<LveModel::Vertex> vertices;
+
+  auto currentTime = std::chrono::high_resolution_clock::now();
+
   float scale = 0.6f;
-  float z = 0.0f;
+
   for ( int u = 0; u < numpoints; u++){
     float y = u;
     for (int i = 0; i < numpoints; i++){
       float x = i;
 
       float X = 1.0f;
-      float r2 = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/X));
-
-      vertices.push_back({{x*scale - 2 ,0.0f,y*scale - 2},{r2, .9f, .3f}});
+      float z = 20*db::perlin(x / 64.0f, float(y) /64.0f,0.0f);
+      vertices.push_back({{x*scale - 2 ,z,y*scale - 2},{.1f, .1f, z}});
     }
   }
   return vertices;
@@ -94,7 +99,7 @@ std::vector<uint32_t> generateIndices(int numpoints){
 // temporary helper function, creates a 1x1x1 mesh centered at offset with an index buffer
 std::unique_ptr<LveModel> createmeshModel(LveDevice& device, glm::vec3 offset) {
   LveModel::Builder modelBuilder{};
-  int numpoints = 100;
+  int numpoints = 500;
   modelBuilder.vertices = generateMesh(numpoints);
   // {
   //     // bottom face (red)
