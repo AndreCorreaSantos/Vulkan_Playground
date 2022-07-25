@@ -45,7 +45,7 @@ void FirstApp::run() {
     camera.setViewYXZ(viewerObject.transform.translation, viewerObject.transform.rotation);
 
     float aspect = lveRenderer.getAspectRatio();
-    camera.setPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 100.f);
+    camera.setPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 1000.f);
 
     if (auto commandBuffer = lveRenderer.beginFrame()) {
       lveRenderer.beginSwapChainRenderPass(commandBuffer);
@@ -73,7 +73,7 @@ std::vector<LveModel::Vertex> generateMesh(int numpoints){
       float x = i;
 
       float X = 1.0f;
-      float z = 20*db::perlin(x / 64.0f, float(y) /64.0f,0.0f);
+      float z = 40*db::perlin(x / 64.0f, float(y) /64.0f,0.0f);
       vertices.push_back({{x*scale - 2 ,z,y*scale - 2},{.1f, .1f, z}});
     }
   }
@@ -99,7 +99,7 @@ std::vector<uint32_t> generateIndices(int numpoints){
 // temporary helper function, creates a 1x1x1 mesh centered at offset with an index buffer
 std::unique_ptr<LveModel> createmeshModel(LveDevice& device, glm::vec3 offset) {
   LveModel::Builder modelBuilder{};
-  int numpoints = 500;
+  int numpoints = 1000;
   modelBuilder.vertices = generateMesh(numpoints);
   // {
   //     // bottom face (red)

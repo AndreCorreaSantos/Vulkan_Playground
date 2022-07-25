@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 25 14:46:29 2022
+# Make data base, printed on Mon Jul 25 20:33:25 2022
 
 # Variables
 
@@ -166,7 +164,7 @@ VSCODE_CODE_CACHE_PATH = /home/borg/.config/Code/CachedData/3b889b090b5ad5793f52
 # environment
 LOGNAME = borg
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 +F = $(notdir $+)
 # environment
@@ -210,7 +208,7 @@ LC_TELEPHONE = pt_BR.UTF-8
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/borg/Desktop
+OLDPWD = /home/borg
 # default
 .VARIABLES := 
 # automatic
@@ -254,11 +252,11 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/4745e89f_175e_4718_9128_2fda55d7fde1
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/984d56f5_8fbd_481d_9f78_24ae999eb9ee
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.622
+GNOME_TERMINAL_SERVICE = :1.2578
 # default
 SUFFIXES := 
 # environment
@@ -282,20 +280,22 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 19005
+VSCODE_PID = 54147
 # variable set hash-table stats:
 # Load=134/1024=13%, Rehash=0, Collisions=17/159=11%
 
- 
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
 
 # Directories
 
-# . (device 2049, inode 1343976): 31 files, no impossibilities.
+ 
+make: *** No rule to make target 'all'.  Stop.
 
-# 31 files, no impossibilities in 1 directories.
+# . (device 2049, inode 1343976): 32 files, no impossibilities.
+
+# 32 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -334,7 +334,7 @@ lve_model.hpp:
 #  Modification time never checked.
 #  File has not been updated.
 
-VulkanEngine: lve_pipeline.cpp lve_renderer.cpp lve_model.cpp lve_window.cpp lve_device.cpp lve_camera.cpp simple_render_system.cpp keyboard_movement_controller.cpp first_app.cpp main.cpp lve_swap_chain.cpp lve_model.hpp lve_window.hpp lve_device.hpp lve_camera.hpp simple_render_system.hpp lve_game_object.hpp keyboard_movement_controller.hpp first_app.hpp lve_swap_chain.hpp lve_pipeline.hpp lve_renderer.hpp
+VulkanEngine: lve_pipeline.cpp lve_renderer.cpp lve_model.cpp lve_window.cpp lve_device.cpp lve_camera.cpp simple_render_system.cpp keyboard_movement_controller.cpp first_app.cpp main.cpp lve_swap_chain.cpp db_perlin.hpp lve_model.hpp lve_window.hpp lve_device.hpp lve_camera.hpp simple_render_system.hpp lve_game_object.hpp keyboard_movement_controller.hpp first_app.hpp lve_swap_chain.hpp lve_pipeline.hpp lve_renderer.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -348,6 +348,12 @@ VulkanEngine: lve_pipeline.cpp lve_renderer.cpp lve_model.cpp lve_window.cpp lve
 
 # Not a target:
 first_app.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+db_perlin.hpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -484,19 +490,19 @@ lve_model.cpp:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=30/1024=3%, Rehash=0, Collisions=0/67=0%
+# Load=31/1024=3%, Rehash=0, Collisions=0/69=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 39 / storage = 539 B / avg = 13 B
-# current buf: size = 8162 B / used = 539 B / count = 39 / avg = 13 B
+# strcache buffers: 1 (0) / strings = 40 / storage = 553 B / avg = 13 B
+# current buf: size = 8162 B / used = 553 B / count = 40 / avg = 13 B
 
-# strcache performance: lookups = 73 / hit rate = 46%
+# strcache performance: lookups = 75 / hit rate = 46%
 # hash-table stats:
-# Load=39/8192=0%, Rehash=0, Collisions=1/73=1%
-# Finished Make data base on Mon Jul 25 14:46:29 2022
+# Load=40/8192=0%, Rehash=0, Collisions=1/75=1%
+# Finished Make data base on Mon Jul 25 20:33:25 2022
 
  
