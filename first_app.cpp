@@ -42,7 +42,7 @@ void FirstApp::run() {
     camera.setViewYXZ(viewerObject.transform.translation, viewerObject.transform.rotation);
 
     float aspect = lveRenderer.getAspectRatio();
-    camera.setPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 10.f);
+    camera.setPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 100.f);
 
     if (auto commandBuffer = lveRenderer.beginFrame()) {
       lveRenderer.beginSwapChainRenderPass(commandBuffer);
@@ -57,63 +57,69 @@ void FirstApp::run() {
   vkDeviceWaitIdle(lveDevice.device());
 }
 
-// temporary helper function, creates a 1x1x1 cube centered at offset with an index buffer
-std::unique_ptr<LveModel> createCubeModel(LveDevice& device, glm::vec3 offset) {
+std::vector<LveModel::Vertex> generateMesh(int numpoints){
+  std::vector<LveModel::Vertex> vertices;
+  float scale = 0.6f;
+  float z = 0.0f;
+  for ( int u = 0; u < numpoints; u++){
+    float y = u;
+    for (int i = 0; i < numpoints; i++){
+      float x = i;
+
+      float X = 1.0f;
+      float r2 = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/X));
+
+      vertices.push_back({{x*scale - 2 ,0.0f,y*scale - 2},{r2, .9f, .3f}});
+    }
+  }
+  return vertices;
+}
+std::vector<uint32_t> generateIndices(int numpoints){
+  std::vector<uint32_t> indices;
+  for (int u =0;u<numpoints-1;u++){
+    for (int i =0;i<numpoints-1;i++){
+        int c = i*numpoints + u;
+        int r = (i+1)*numpoints + u;
+        indices.push_back(c);
+        indices.push_back(c+1);
+        indices.push_back(r);
+        indices.push_back(r);
+        indices.push_back(r+1);
+        indices.push_back(c+1);
+    }
+  }
+  return indices;
+}
+
+// temporary helper function, creates a 1x1x1 mesh centered at offset with an index buffer
+std::unique_ptr<LveModel> createmeshModel(LveDevice& device, glm::vec3 offset) {
   LveModel::Builder modelBuilder{};
-  modelBuilder.vertices = {
-      // left face (white)
-      {{-.5f, -.5f, -.5f}, {.9f, .9f, .9f}},
-      {{-.5f, .5f, .5f}, {.9f, .9f, .9f}},
-      {{-.5f, -.5f, .5f}, {.9f, .9f, .9f}},
-      {{-.5f, .5f, -.5f}, {.9f, .9f, .9f}},
-
-      // right face (yellow)
-      {{.5f, -.5f, -.5f}, {.8f, .8f, .1f}},
-      {{.5f, .5f, .5f}, {.8f, .8f, .1f}},
-      {{.5f, -.5f, .5f}, {.8f, .8f, .1f}},
-      {{.5f, .5f, -.5f}, {.8f, .8f, .1f}},
-
-      // top face (orange, remember y axis points down)
-      {{-.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
-      {{.5f, -.5f, .5f}, {.9f, .6f, .1f}},
-      {{-.5f, -.5f, .5f}, {.9f, .6f, .1f}},
-      {{.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
-
-      // bottom face (red)
-      {{-.5f, .5f, -.5f}, {.8f, .1f, .1f}},
-      {{.5f, .5f, .5f}, {.8f, .1f, .1f}},
-      {{-.5f, .5f, .5f}, {.8f, .1f, .1f}},
-      {{.5f, .5f, -.5f}, {.8f, .1f, .1f}},
-
-      // nose face (blue)
-      {{-.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
-      {{.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
-      {{-.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
-      {{.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
-
-      // tail face (green)
-      {{-.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
-      {{.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
-      {{-.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
-      {{.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
-  };
+  int numpoints = 100;
+  modelBuilder.vertices = generateMesh(numpoints);
+  // {
+  //     // bottom face (red)
+  //     {{-.5f, .0f, -.5f}, {.8f, .1f, .1f}},
+  //     {{.5f, .0f, .5f}, {.8f, .1f, .1f}},
+  //     {{-.5f, .0f, .5f}, {.8f, .1f, .1f}},
+  //     {{.5f, .0f, -.5f}, {.8f, .1f, .1f}},
+  // };
   for (auto& v : modelBuilder.vertices) {
     v.position += offset;
   }
 
-  modelBuilder.indices = {0,  1,  2,  0,  3,  1,  4,  5,  6,  4,  7,  5,  8,  9,  10, 8,  11, 9,
-                          12, 13, 14, 12, 15, 13, 16, 17, 18, 16, 19, 17, 20, 21, 22, 20, 23, 21};
+  modelBuilder.indices = generateIndices(numpoints);
+  //{0,  1,  2,  0,  3,  1};
 
   return std::make_unique<LveModel>(device, modelBuilder);
 }
 
 void FirstApp::loadGameObjects() {
-  std::shared_ptr<LveModel> lveModel = createCubeModel(lveDevice, {.0f, .0f, .0f});
-  auto cube = LveGameObject::createGameObject();
-  cube.model = lveModel;
-  cube.transform.translation = {.0f, .0f, 2.5f};
-  cube.transform.scale = {.5f, .5f, .5f};
-  gameObjects.push_back(std::move(cube));
+  std::shared_ptr<LveModel> lveModel = createmeshModel(lveDevice, {.0f, .0f, .0f});
+  auto mesh = LveGameObject::createGameObject();
+  mesh.model = lveModel;
+  mesh.transform.translation = {.0f, .0f, 2.5f};
+  mesh.transform.scale = {.5f, .5f, .5f};
+  gameObjects.push_back(std::move(mesh));
 }
 
 }  // namespace lve
