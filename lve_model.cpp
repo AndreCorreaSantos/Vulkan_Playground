@@ -44,7 +44,7 @@ void LveModel::createVertexBuffers(const std::vector<Vertex> &vertices) {
 
 
 void LveModel::createIndexBuffers(const std::vector<uint16_t> &indices) {
-    VkDeviceSize bufferSize = sizeof(indices[0]) * indices.size();
+    VkDeviceSize bufferSize = 4*(sizeof(indices[0]) * indices.size());
     indexCount = static_cast<uint32_t>(indices.size());
     VkBuffer stagingBuffer;
     VkDeviceMemory stagingBufferMemory;
