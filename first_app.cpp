@@ -73,7 +73,7 @@ std::vector<LveModel::Vertex> generateMesh(int numpoints){
       float x = i;
 
       float X = 1.0f;
-      float z = 40*db::perlin(x / 64.0f, float(y) /64.0f,0.0f);
+      float z = 40*db::perlin(x / 64.0f, float(y) /64.0f,1.0f);
       vertices.push_back({{x*scale - 2 ,z,y*scale - 2},{.1f, .1f, z}});
     }
   }
