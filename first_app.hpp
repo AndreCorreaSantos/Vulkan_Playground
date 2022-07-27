@@ -24,6 +24,7 @@ class FirstApp {
   void run();
 
  private:
+  void updateGameObjects(std::vector<LveGameObject>& gameObjects);
   void loadGameObjects();
 
   LveWindow lveWindow{WIDTH, HEIGHT, "L-systems"};

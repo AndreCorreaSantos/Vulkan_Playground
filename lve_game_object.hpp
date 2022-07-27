@@ -13,6 +13,7 @@ struct TransformComponent {
   glm::vec3 translation{};  // (position offset)
   glm::vec3 scale{1.f, 1.f,1.f};
   glm::vec3 rotation{};
+  glm::vec3 velocity;
 
 glm::mat4 mat4() {
     const float c3 = glm::cos(rotation.z);

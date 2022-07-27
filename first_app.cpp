@@ -50,7 +50,7 @@ void FirstApp::run() {
     if (auto commandBuffer = lveRenderer.beginFrame()) {
       lveRenderer.beginSwapChainRenderPass(commandBuffer);
 
-      updateGameObjects();
+      updateGameObjects(gameObjects);
       simpleRenderSystem.renderGameObjects(commandBuffer, gameObjects, camera);
 
       lveRenderer.endSwapChainRenderPass(commandBuffer);
@@ -201,8 +201,10 @@ std::unique_ptr<LveModel> createsphereModel(LveDevice& device, glm::vec3 offset)
   return std::make_unique<LveModel>(device, modelBuilder);
 }
 
-void FirstApp::updateGameObjects(){
-  
+void FirstApp::updateGameObjects(std::vector<LveGameObject>& gameObjects){
+  for(auto& obj : gameObjects){
+    obj.transform.translation = obj.transform.velocity*obj.transform.translation;
+  }
 }
 
 void FirstApp::loadGameObjects() {
@@ -217,6 +219,7 @@ void FirstApp::loadGameObjects() {
   auto sphere = LveGameObject::createGameObject();
   sphere.model = lvesphereModel;
   sphere.transform.translation = {30.0f, -50.0f, 30.0f};
+  sphere.transform.velocity = {1.001f,1.001f,1.001f};
   sphere.transform.scale = {.5f, .5f, .5f};
   gameObjects.push_back(std::move(sphere));
 }
