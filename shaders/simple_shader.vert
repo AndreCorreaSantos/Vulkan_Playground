@@ -13,10 +13,4 @@ layout(push_constant) uniform Push {
 void main() {
   gl_Position = push.transform*vec4(position,1.0);
   fragColor = color;
-  if( (position[1]< 1.0)&&(position[1]> -1.0) )
-  {
-    fragColor = vec3(0.5, 0.35, 0.05);
-  } else if( position[1] < -12.0) {
-    fragColor = vec3(0.8,0.8,0.8);
-  }
 }
