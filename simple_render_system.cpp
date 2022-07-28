@@ -10,12 +10,13 @@
 #include <array>
 #include <cassert>
 #include <stdexcept>
-
+#include <iostream>
 namespace lve {
 
 struct SimplePushConstantData {
   glm::mat4 transform{1.f};
   alignas(16) glm::vec3 color{};
+  float time;
 };
 
 SimpleRenderSystem::SimpleRenderSystem(LveDevice& device, VkRenderPass renderPass)
@@ -72,6 +73,7 @@ void SimpleRenderSystem::renderGameObjects(
     SimplePushConstantData push{};
     push.color = obj.color;
     push.transform = projectionView * obj.transform.mat4();
+    push.time = obj.time;
 
     vkCmdPushConstants(
         commandBuffer,

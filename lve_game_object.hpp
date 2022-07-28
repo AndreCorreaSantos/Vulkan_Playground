@@ -15,6 +15,7 @@ struct TransformComponent {
   glm::vec3 rotation{};
   glm::vec3 velocity;
 
+
 glm::mat4 mat4() {
     const float c3 = glm::cos(rotation.z);
     const float s3 = glm::sin(rotation.z);
@@ -65,9 +66,10 @@ class LveGameObject {
   std::shared_ptr<LveModel> model{};
   glm::vec3 color{};
   TransformComponent transform{};
-
+  float time;
  private:
   LveGameObject(id_t objId) : id{objId} {}
+
 
   id_t id;
 };

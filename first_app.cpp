@@ -15,6 +15,7 @@
 #include <cassert>
 #include <chrono>
 #include <stdexcept>
+#include <iostream>
 #define DB_PERLIN_IMPL
 #include "db_perlin.hpp"
 
@@ -26,6 +27,7 @@ FirstApp::FirstApp() { loadGameObjects(); }
 FirstApp::~FirstApp() {}
 
 void FirstApp::run() {
+  float time = 0;
   SimpleRenderSystem simpleRenderSystem{lveDevice, lveRenderer.getSwapChainRenderPass()};
   LveCamera camera{};
 
@@ -40,7 +42,7 @@ void FirstApp::run() {
     float frameTime =
         std::chrono::duration<float, std::chrono::seconds::period>(newTime - currentTime).count();
     currentTime = newTime;
-
+    time += frameTime;
     cameraController.moveInPlaneXZ(lveWindow.getGLFWwindow(), frameTime, viewerObject);
     camera.setViewYXZ(viewerObject.transform.translation, viewerObject.transform.rotation);
 
@@ -50,7 +52,7 @@ void FirstApp::run() {
     if (auto commandBuffer = lveRenderer.beginFrame()) {
       lveRenderer.beginSwapChainRenderPass(commandBuffer);
 
-      updateGameObjects(gameObjects);
+      updateGameObjects(gameObjects,time);
       simpleRenderSystem.renderGameObjects(commandBuffer, gameObjects, camera);
 
       lveRenderer.endSwapChainRenderPass(commandBuffer);
@@ -73,8 +75,7 @@ std::vector<LveModel::Vertex> generateMeshVertices(int numpoints){
     for (int i = 0; i < numpoints; i++){
       float x = i;
 
-      float X = 1.0f;
-      float z = 40*db::perlin(x / 64.0f, float(y) /64.0f,1.0f);
+      float z = 0; //40*db::perlin(x / 64.0f, float(y) /64.0f,1.0f);
 
       // if( (position[1]< 1.0)&&(position[1]> -1.0) )
       //   {
@@ -82,14 +83,14 @@ std::vector<LveModel::Vertex> generateMeshVertices(int numpoints){
       //   } else if( position[1] < -12.0) {
       //    fragColor = vec3(0.8,0.8,0.8);
       //   }
-      glm::vec3 color = {.1f, .1f, z};
-      if((z< 1.0)&&(z> -1.0)){
-        color = {0.5f, 0.35f, 0.05f};
-      } else if(z < -12.0){
-        color = {0.8f,0.8f,0.8f};
-      }
+      glm::vec3 color = {.5f, .5f, .5f};
+      // if((z< 1.0)&&(z> -1.0)){
+      //   color = {0.5f, 0.35f, 0.05f};
+      // } else if(z < -12.0){
+      //   color = {0.8f,0.8f,0.8f};
+      // }
 
-      vertices.push_back({{x*scale - 2 ,z,y*scale - 2},color});
+      vertices.push_back({{x*scale - 2 ,y*scale - 2,z},color});
     }
   }
   return vertices;
@@ -201,9 +202,12 @@ std::unique_ptr<LveModel> createsphereModel(LveDevice& device, glm::vec3 offset)
   return std::make_unique<LveModel>(device, modelBuilder);
 }
 
-void FirstApp::updateGameObjects(std::vector<LveGameObject>& gameObjects){
+void FirstApp::updateGameObjects(std::vector<LveGameObject>& gameObjects, float time){
   for(auto& obj : gameObjects){
-    obj.transform.translation = obj.transform.velocity*obj.transform.translation;
+    obj.time = time;
+    obj.transform.translation.x = obj.transform.velocity.x*obj.transform.translation.x;
+    obj.transform.translation.y = obj.transform.velocity.y*obj.transform.translation.y;
+    obj.transform.translation.z = obj.transform.velocity.z*obj.transform.translation.z;
   }
 }
 
@@ -215,13 +219,6 @@ void FirstApp::loadGameObjects() {
   mesh.transform.scale = {.5f, .5f, .5f};
   gameObjects.push_back(std::move(mesh));
 
-  std::shared_ptr<LveModel> lvesphereModel = createsphereModel(lveDevice, {.0f, .0f, .0f});
-  auto sphere = LveGameObject::createGameObject();
-  sphere.model = lvesphereModel;
-  sphere.transform.translation = {30.0f, -50.0f, 30.0f};
-  sphere.transform.velocity = {1.001f,1.001f,1.001f};
-  sphere.transform.scale = {.5f, .5f, .5f};
-  gameObjects.push_back(std::move(sphere));
 }
 
 }  // namespace lve
