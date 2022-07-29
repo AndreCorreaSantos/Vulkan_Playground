@@ -1,6 +1,6 @@
 #version 450
 
-layout(location = 0) in vec3 position; //xzy
+layout(location = 0) in vec3 position; //xyz must be outputed as xzy
 layout(location = 1) in vec3 color;
 
 layout(location = 0) out vec3 fragColor;
@@ -36,10 +36,10 @@ layout(push_constant) uniform Push {
 
 void main() {
   float time = push.time;
-  vec2 xy = vec2(position[0]+2*time,position[1]+2*time);
+  vec2 xy = vec2(position[0]+time,position[1]+time);
 
   float frequency = 50.0;
-  float z = 50*noise(xy,frequency);
+  float z = sin(position[0]+time)*cos(position[1]+time);
   vec3 noisePosition = vec3(position[0],z,position[1]);
   gl_Position = push.transform*vec4(noisePosition,1.0);
   fragColor = color;
