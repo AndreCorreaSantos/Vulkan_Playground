@@ -38,7 +38,7 @@ void main() {
   float time = push.time;
   vec2 xy = vec2(position[0]+2*time,position[1]+2*time);
 
-  float frequency = 25.0;
+  float frequency = 50.0;
   float z = 50*noise(xy,frequency);
   vec3 noisePosition = vec3(position[0],z,position[1]);
   gl_Position = push.transform*vec4(noisePosition,1.0);
