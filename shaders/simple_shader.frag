@@ -1,13 +1,30 @@
 #version 450
 
 layout(location = 0) in vec3 fragColor;
-layout (location = 0) out vec4 outColor;
+layout(location = 1) in vec3 position; //received in xyz
 
+layout (location = 0) out vec4 outColor;
 layout(push_constant) uniform Push {
   mat4 transform;
-  vec3 color;
+  mat4 modelMatrix;
+  float time;
 } push;
 
+vec3 light = normalize(vec3(1.0,1.0,1.0)); //specified in xyz
+
 void main() {
-  outColor = vec4(fragColor, 1.0);
+
+ //noisePosition in xyz
+
+  vec3 tangent = dFdx(position);
+  vec3 bitangent = dFdy(position);
+  vec3 normal = max( normalize(cross(tangent,bitangent)),0.0); //testing transforming normals from model space to world space
+
+  //temporary
+  //vec3 normalWorldSpace = normalize(mat3(push.modelMatrix)*normal);
+
+  float cosTheta = dot(normal,light);
+
+
+  outColor = vec4(fragColor*cosTheta, 1.0);
 }
