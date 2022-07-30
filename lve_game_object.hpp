@@ -67,6 +67,7 @@ class LveGameObject {
   glm::vec3 color{};
   TransformComponent transform{};
   float time;
+  float type;
  private:
   LveGameObject(id_t objId) : id{objId} {}
 

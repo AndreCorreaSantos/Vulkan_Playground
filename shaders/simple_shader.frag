@@ -2,6 +2,7 @@
 
 layout(location = 0) in vec3 fragColor;
 layout(location = 1) in vec3 position; //received in xyz
+layout(location = 2) in float type; //float 0.0 false, 1.0 true
 
 layout (location = 0) out vec4 outColor;
 layout(push_constant) uniform Push {
