@@ -10,8 +10,8 @@ layout(push_constant) uniform Push {
   float time;
 } push;
 
-vec3 light = normalize(vec3(1.0,1.0,1.0)); //specified in xyz
-
+vec3 light = normalize(vec3(1.0,3.0,1.0)); //specified in xyz
+const float ambient = 0.02;
 void main() {
 
  //noisePosition in xyz
@@ -19,11 +19,11 @@ void main() {
   vec3 tangent = dFdx(position);
   vec3 bitangent = dFdy(position);
   vec3 normal = max( normalize(cross(tangent,bitangent)),0.0); //testing transforming normals from model space to world space
-
+  //they are flat shaded at the moment.
   //temporary
   //vec3 normalWorldSpace = normalize(mat3(push.modelMatrix)*normal);
 
-  float cosTheta = dot(normal,light);
+  float cosTheta = dot(normal,light)+ambient;
 
 
   outColor = vec4(fragColor*cosTheta, 1.0);

@@ -83,7 +83,7 @@ std::vector<LveModel::Vertex> generateMeshVertices(int numpoints){
       //   } else if( position[1] < -12.0) {
       //    fragColor = vec3(0.8,0.8,0.8);
       //   }
-      glm::vec3 color = {.5f, .5f, .5f};
+      glm::vec3 color = {1.0f,0.6f,0.4f};
       // if((z< 1.0)&&(z> -1.0)){
       //   color = {0.5f, 0.35f, 0.05f};
       // } else if(z < -12.0){
