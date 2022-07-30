@@ -68,7 +68,7 @@ std::vector<LveModel::Vertex> generateMeshVertices(int numpoints){
 
   auto currentTime = std::chrono::high_resolution_clock::now();
 
-  float scale = 0.1f;
+  float scale = 0.01f;
 
   for ( int u = 0; u < numpoints; u++){
     float y = u;
@@ -179,7 +179,7 @@ return indices;
 // temporary helper function, creates a 1x1x1 mesh centered at offset with an index buffer
 std::unique_ptr<LveModel> createmeshModel(LveDevice& device, glm::vec3 offset) {
   LveModel::Builder modelBuilder{};
-  int numpoints = 100;
+  int numpoints = 3000;
   modelBuilder.vertices = generateMeshVertices(numpoints);
   for (auto& v : modelBuilder.vertices) {
     v.position += offset;
