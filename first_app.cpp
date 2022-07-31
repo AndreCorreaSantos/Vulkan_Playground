@@ -63,12 +63,10 @@ void FirstApp::run() {
   vkDeviceWaitIdle(lveDevice.device());
 }
 
-std::vector<LveModel::Vertex> generateMeshVertices(int numpoints){
+std::vector<LveModel::Vertex> generateMeshVertices(int numpoints,float scale){
   std::vector<LveModel::Vertex> vertices;
 
   auto currentTime = std::chrono::high_resolution_clock::now();
-
-  float scale = 0.01f;
 
   for ( int u = 0; u < numpoints; u++){
     float y = u;
@@ -78,7 +76,7 @@ std::vector<LveModel::Vertex> generateMeshVertices(int numpoints){
       float z = 0;
       glm::vec3 color = {1.0f,0.6f,0.4f};
       float type = 1.0;
-      vertices.push_back({{x*scale - 2 ,y*scale - 2,z},color,type});
+      vertices.push_back({{(x-numpoints/2)*scale,(y-numpoints/2)*scale,z},color,type});
     }
   }
   return vertices;
@@ -127,7 +125,7 @@ for(int i = 0; i <= stackCount; ++i)
         x = xy * cosf(sectorAngle);             // r * cos(u) * cos(v)
         y = xy * sinf(sectorAngle);             // r * cos(u) * sin(v)
         float type = 2.0;
-        vertices.push_back({{x,y,z},{0.1f,0.1f,0.1f},type});
+        vertices.push_back({{x,y,z},{0.33f,0.87f,1.0f},type});
     }
 }
 return vertices;
@@ -166,10 +164,9 @@ return indices;
 
 
 // temporary helper function, creates a 1x1x1 mesh centered at offset with an index buffer
-std::unique_ptr<LveModel> createmeshModel(LveDevice& device, glm::vec3 offset) {
+std::unique_ptr<LveModel> createmeshModel(LveDevice& device, glm::vec3 offset, int numpoints, float scale) {
   LveModel::Builder modelBuilder{};
-  int numpoints = 3000;
-  modelBuilder.vertices = generateMeshVertices(numpoints);
+  modelBuilder.vertices = generateMeshVertices(numpoints,scale);
   for (auto& v : modelBuilder.vertices) {
     v.position += offset;
   }
@@ -181,7 +178,7 @@ std::unique_ptr<LveModel> createsphereModel(LveDevice& device, glm::vec3 offset)
   int sectorCount = 50;
   int stackCount = 50;
   float pi = 3.14159f;
-  float radius = 20.0f;
+  float radius = 200.0f;
   LveModel::Builder modelBuilder{};
   modelBuilder.vertices = generateSphereVertices(radius,pi,sectorCount,stackCount);
   for (auto& v : modelBuilder.vertices) {
@@ -201,17 +198,20 @@ void FirstApp::updateGameObjects(std::vector<LveGameObject>& gameObjects, float 
 }
 
 void FirstApp::loadGameObjects() {
-  std::shared_ptr<LveModel> lvemeshModel = createmeshModel(lveDevice, {.0f, .0f, .0f});
+  int numpoints =  3000; //translation not working
+  float np = static_cast< float > (numpoints);
+  float scale = 0.01f;
+  std::shared_ptr<LveModel> lvemeshModel = createmeshModel(lveDevice, {.0f, .0f, .0f}, numpoints,scale);
   auto mesh = LveGameObject::createGameObject();
   mesh.model = lvemeshModel;
-  mesh.transform.translation = {.0f, .0f, .0f};
+  mesh.transform.translation = {-np*scale, -np*scale, .0f};
   mesh.transform.scale = {1.0f, 1.0f, 1.0f};
   gameObjects.push_back(std::move(mesh));
 
     std::shared_ptr<LveModel> lvesphereModel = createsphereModel(lveDevice, {.0f, .0f, .0f});
   auto sphere = LveGameObject::createGameObject();
   sphere.model = lvesphereModel;
-  sphere.transform.translation = {0.0f, 0.0f, 0.0f};
+  sphere.transform.translation = {3.0f, 0.0f, 0.0f};
   sphere.transform.scale = {1.0f, 1.0f, 1.0f};
   gameObjects.push_back(std::move(sphere));
 
