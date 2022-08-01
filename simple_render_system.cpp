@@ -23,6 +23,7 @@ SimpleRenderSystem::SimpleRenderSystem(LveDevice& device, VkRenderPass renderPas
     : lveDevice{device} {
   createPipelineLayout();
   createPipeline(renderPass);
+  createMeshPipeline(renderPass);
 }
 
 SimpleRenderSystem::~SimpleRenderSystem() {
@@ -61,10 +62,26 @@ void SimpleRenderSystem::createPipeline(VkRenderPass renderPass) {
       pipelineConfig);
 }
 
+void SimpleRenderSystem::createMeshPipeline(VkRenderPass renderPass) {
+  assert(pipelineLayout != nullptr && "Cannot create pipeline before pipeline layout");
+
+  PipelineConfigInfo pipelineConfig{};
+  LvePipeline::defaultPipelineConfigInfo(pipelineConfig);
+  pipelineConfig.renderPass = renderPass;
+  pipelineConfig.pipelineLayout = pipelineLayout;
+  lvePipeline = std::make_unique<LvePipeline>(
+      lveDevice,
+      "shaders/noise_shader.vert.spv",
+      "shaders/diffuseLighting_shader.frag.spv",
+      pipelineConfig);
+}
+
 void SimpleRenderSystem::renderGameObjects(
     VkCommandBuffer commandBuffer,
     std::vector<LveGameObject>& gameObjects,
+    std::vector<LveGameObject>& meshObjects,
     const LveCamera& camera) {
+
   lvePipeline->bind(commandBuffer);
 
   auto projectionView = camera.getProjection() * camera.getView();
@@ -85,6 +102,26 @@ void SimpleRenderSystem::renderGameObjects(
         &push);
     obj.model->bind(commandBuffer);
     obj.model->draw(commandBuffer);
+  }
+
+  lveMeshPipeline->bind(commandBuffer);
+  //mesh rendering with different shaders.
+  for (auto& mesh : meshObjects) {
+    SimplePushConstantData push{};
+    auto modelMatrix = mesh.transform.mat4();
+    push.transform = projectionView * modelMatrix;
+    push.modelMatrix = modelMatrix;
+    push.time = mesh.time;
+
+    vkCmdPushConstants(
+        commandBuffer,
+        pipelineLayout,
+        VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
+        0,
+        sizeof(SimplePushConstantData),
+        &push);
+    mesh.model->bind(commandBuffer);
+    mesh.model->draw(commandBuffer);
   }
 }
 

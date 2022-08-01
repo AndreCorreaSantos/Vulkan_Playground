@@ -32,5 +32,6 @@ class FirstApp {
   LveRenderer lveRenderer{lveWindow, lveDevice};
 
   std::vector<LveGameObject> gameObjects;
+  std::vector<LveGameObject> meshObjects;
 };
 }  // namespace lve

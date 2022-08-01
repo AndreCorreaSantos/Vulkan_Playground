@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul 30 21:29:17 2022
+# Make data base, printed on Mon Aug  1 13:21:38 2022
 
 # Variables
 
@@ -45,7 +45,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:47643
+JOURNAL_STREAM = 8:45802
 # makefile (from 'Makefile', line 1)
 CFLAGS = -std=c++17 -O2
 # environment
@@ -75,7 +75,7 @@ LC_CTYPE = pt_BR.UTF-8
 # environment
 ROS_PACKAGE_PATH = /home/borg/catkin_ws/src:/opt/ros/noetic/share
 # environment
-MANAGERPID = 1893
+MANAGERPID = 1871
 # environment
 TURTLEBOT3_MODEL = burger
 # environment
@@ -99,7 +99,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxdxegedabagacad
 # environment
-SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2088,unix/borg:/tmp/.ICE-unix/2088
+SESSION_MANAGER = local/borg:@/tmp/.ICE-unix/2068,unix/borg:/tmp/.ICE-unix/2068
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -109,7 +109,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 67fca007068c46b9b3808b67872fbfe4
+INVOCATION_ID = 5162b18e00994f259a935562ed39de30
 # makefile (from 'Makefile', line 2)
 LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 # default
@@ -142,7 +142,7 @@ OSH = /home/borg/.oh-my-bash
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2039
+SSH_AGENT_PID = 2017
 # environment
 PKG_CONFIG_PATH = /home/borg/catkin_ws/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig:/opt/ros/noetic/lib/x86_64-linux-gnu/pkgconfig
 # environment
@@ -164,7 +164,7 @@ VSCODE_CODE_CACHE_PATH = /home/borg/.config/Code/CachedData/3b889b090b5ad5793f52
 # environment
 LOGNAME = borg
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 +F = $(notdir $+)
 # environment
@@ -252,11 +252,11 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/690ac21f_fdb2_4642_ad5f_5716684f968e
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/c6f167a5_bad0_467d_949e_496df1831abc
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.153
+GNOME_TERMINAL_SERVICE = :1.131
 # default
 SUFFIXES := 
 # environment
@@ -280,12 +280,12 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 5689
+VSCODE_PID = 8145
 # variable set hash-table stats:
+# Load=134/1024=13%, Rehash=0, Collisions=17/159=11%
  
 make: *** No rule to make target 'all'.  Stop.
 
-# Load=134/1024=13%, Rehash=0, Collisions=17/159=11%
 
 # Pattern-specific Variable Values
 
@@ -503,6 +503,6 @@ lve_model.cpp:
 # strcache performance: lookups = 75 / hit rate = 46%
 # hash-table stats:
 # Load=40/8192=0%, Rehash=0, Collisions=1/75=1%
-# Finished Make data base on Sat Jul 30 21:29:17 2022
+# Finished Make data base on Mon Aug  1 13:21:38 2022
 
  

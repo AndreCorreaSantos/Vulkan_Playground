@@ -53,7 +53,7 @@ void FirstApp::run() {
       lveRenderer.beginSwapChainRenderPass(commandBuffer);
 
       updateGameObjects(gameObjects,time);
-      simpleRenderSystem.renderGameObjects(commandBuffer, gameObjects, camera);
+      simpleRenderSystem.renderGameObjects(commandBuffer, gameObjects,meshObjects,camera);
 
       lveRenderer.endSwapChainRenderPass(commandBuffer);
       lveRenderer.endFrame();
@@ -75,8 +75,7 @@ std::vector<LveModel::Vertex> generateMeshVertices(int numpoints,float scale){
 
       float z = 0;
       glm::vec3 color = {1.0f,0.6f,0.4f};
-      float type = 1.0;
-      vertices.push_back({{(x-numpoints/2)*scale,(y-numpoints/2)*scale,z},color,type});
+      vertices.push_back({{(x-numpoints/2)*scale,(y-numpoints/2)*scale,z},color});
     }
   }
   return vertices;
@@ -124,8 +123,7 @@ for(int i = 0; i <= stackCount; ++i)
         // vertex position (x, y, z)
         x = xy * cosf(sectorAngle);             // r * cos(u) * cos(v)
         y = xy * sinf(sectorAngle);             // r * cos(u) * sin(v)
-        float type = 2.0;
-        vertices.push_back({{x,y,z},{0.33f,0.87f,1.0f},type});
+        vertices.push_back({{x,y,z},{0.33f,0.87f,1.0f}});
     }
 }
 return vertices;
@@ -206,7 +204,7 @@ void FirstApp::loadGameObjects() {
   mesh.model = lvemeshModel;
   mesh.transform.translation = {-np*scale, -np*scale, .0f};
   mesh.transform.scale = {1.0f, 1.0f, 1.0f};
-  gameObjects.push_back(std::move(mesh));
+  meshObjects.push_back(std::move(mesh));
 
     std::shared_ptr<LveModel> lvesphereModel = createsphereModel(lveDevice, {.0f, .0f, .0f});
   auto sphere = LveGameObject::createGameObject();

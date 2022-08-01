@@ -21,15 +21,17 @@ class SimpleRenderSystem {
   void renderGameObjects(
       VkCommandBuffer commandBuffer,
       std::vector<LveGameObject> &gameObjects,
+      std::vector<LveGameObject> &meshObjects,
       const LveCamera &camera);
 
  private:
   void createPipelineLayout();
   void createPipeline(VkRenderPass renderPass);
-
+  void createMeshPipeline(VkRenderPass renderPass);
   LveDevice &lveDevice;
 
   std::unique_ptr<LvePipeline> lvePipeline;
+  std::unique_ptr<LvePipeline> lveMeshPipeline;
   VkPipelineLayout pipelineLayout;
 };
 }  // namespace lve
