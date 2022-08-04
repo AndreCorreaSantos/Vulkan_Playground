@@ -69,7 +69,7 @@ void SimpleRenderSystem::createMeshPipeline(VkRenderPass renderPass) {
   LvePipeline::defaultPipelineConfigInfo(pipelineConfig);
   pipelineConfig.renderPass = renderPass;
   pipelineConfig.pipelineLayout = pipelineLayout;
-  lvePipeline = std::make_unique<LvePipeline>(
+  lveMeshPipeline = std::make_unique<LvePipeline>(
       lveDevice,
       "shaders/noise_shader.vert.spv",
       "shaders/diffuseLighting_shader.frag.spv",

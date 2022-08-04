@@ -1,5 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/borg/Desktop/L-systems_compute_shaders'
-g++ -std=c++17 -O2 -o VulkanEngine *.cpp -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
+g++ -std=c++17 -O2 -g -o VulkanEngine *.cpp -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 make: Leaving directory '/home/borg/Desktop/L-systems_compute_shaders'
  
