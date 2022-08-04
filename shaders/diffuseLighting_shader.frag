@@ -18,7 +18,7 @@ vec3 light = normalize(vec3(1.0,3.0,1.0)); //specified in xyz
 const float ambient = 0.02;
 float cosTheta;
 void main() {
-
+  float height = position[2];
  //noisePosition in xyz
   vec3 tangent = dFdx(position);
   vec3 bitangent = dFdy(position);
