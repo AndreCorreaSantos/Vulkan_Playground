@@ -52,7 +52,7 @@ void FirstApp::run() {
     if (auto commandBuffer = lveRenderer.beginFrame()) {
       lveRenderer.beginSwapChainRenderPass(commandBuffer);
 
-      updateGameObjects(gameObjects,time);
+      updateGameObjects(meshObjects,time);
       simpleRenderSystem.renderGameObjects(commandBuffer, gameObjects,meshObjects,camera);
 
       lveRenderer.endSwapChainRenderPass(commandBuffer);
@@ -66,7 +66,6 @@ void FirstApp::run() {
 std::vector<LveModel::Vertex> generateMeshVertices(int numpoints,float scale){
   std::vector<LveModel::Vertex> vertices;
 
-  auto currentTime = std::chrono::high_resolution_clock::now();
 
   for ( int u = 0; u < numpoints; u++){
     float y = u;
@@ -123,7 +122,8 @@ for(int i = 0; i <= stackCount; ++i)
         // vertex position (x, y, z)
         x = xy * cosf(sectorAngle);             // r * cos(u) * cos(v)
         y = xy * sinf(sectorAngle);             // r * cos(u) * sin(v)
-        vertices.push_back({{x,y,z},{0.33f,0.87f,1.0f}});
+        glm::vec3 color = {0.48,0.68,0.75};
+        vertices.push_back({{x,y,z},color});
     }
 }
 return vertices;
@@ -176,7 +176,7 @@ std::unique_ptr<LveModel> createsphereModel(LveDevice& device, glm::vec3 offset)
   int sectorCount = 50;
   int stackCount = 50;
   float pi = 3.14159f;
-  float radius = 200.0f;
+  float radius = 25.0f;
   LveModel::Builder modelBuilder{};
   modelBuilder.vertices = generateSphereVertices(radius,pi,sectorCount,stackCount);
   for (auto& v : modelBuilder.vertices) {

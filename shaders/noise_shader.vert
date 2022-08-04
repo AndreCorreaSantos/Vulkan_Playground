@@ -48,7 +48,7 @@ vec3 noisePosition;
 void main() {
   //removing time to test lighting
 
-  float z = 10*snoise(vec2(position[0]/2+position[1]*0.5+push.time,position[1]/2+push.time))/5;
+  float z = 0.4*snoise(vec2(position[0]+push.time,position[1]+push.time));
   noisePosition = vec3(position[0],z,position[1]);
   gl_Position = push.transform*vec4(noisePosition,1.0);
 

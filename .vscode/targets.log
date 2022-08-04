@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Aug  4 12:36:41 2022
+# Make data base, printed on Thu Aug  4 16:45:28 2022
 
 # Variables
 
@@ -166,7 +164,7 @@ VSCODE_CODE_CACHE_PATH = /home/borg/.config/Code/CachedData/3b889b090b5ad5793f52
 # environment
 LOGNAME = borg
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 +F = $(notdir $+)
 # environment
@@ -254,7 +252,7 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/f18aca05_e07e_479e_989d_6cb412308b0c
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/aacd3770_23f6_4fd7_b29c_8ec53b75d4a8
 # automatic
 ^F = $(notdir $^)
 # environment
@@ -282,9 +280,11 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 4731
+VSCODE_PID = 30695
 # variable set hash-table stats:
  
+make: *** No rule to make target 'all'.  Stop.
+
 # Load=134/1024=13%, Rehash=0, Collisions=17/159=11%
 
 # Pattern-specific Variable Values
@@ -503,6 +503,6 @@ lve_model.cpp:
 # strcache performance: lookups = 76 / hit rate = 46%
 # hash-table stats:
 # Load=41/8192=1%, Rehash=0, Collisions=1/76=1%
-# Finished Make data base on Thu Aug  4 12:36:41 2022
+# Finished Make data base on Thu Aug  4 16:45:28 2022
 
  
