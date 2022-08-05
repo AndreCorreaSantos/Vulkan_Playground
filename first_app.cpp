@@ -176,7 +176,7 @@ std::unique_ptr<LveModel> createsphereModel(LveDevice& device, glm::vec3 offset)
   int sectorCount = 50;
   int stackCount = 50;
   float pi = 3.14159f;
-  float radius = 25.0f;
+  float radius = 100.0f;
   LveModel::Builder modelBuilder{};
   modelBuilder.vertices = generateSphereVertices(radius,pi,sectorCount,stackCount);
   for (auto& v : modelBuilder.vertices) {

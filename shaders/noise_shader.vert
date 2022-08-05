@@ -51,11 +51,13 @@ layout(push_constant) uniform Push {
 } push;
 
 vec3 noisePosition;
-
+vec2 center = vec2(0,0);
 void main() {
   //removing time to test lighting
+  float dist = (1/-clamp( length(center-vec2(position[0],position[1])),1.0000,100000.0 ))-0.1;
+
   float scaling = 15;
-  float z = scaling*SmoothNoise2(vec2((position[0]+push.time)/scaling,(position[1]+push.time)/scaling));
+  float z = dist*scaling*SmoothNoise2(vec2((position[0]+push.time)/scaling,(position[1]+push.time)/scaling));
   noisePosition = vec3(position[0],z,position[1]);
   gl_Position = push.transform*vec4(noisePosition,1.0);
 
