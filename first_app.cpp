@@ -73,7 +73,7 @@ std::vector<LveModel::Vertex> generateMeshVertices(int numpoints,float scale){
       float x = i;
 
       float z = 0;
-      glm::vec3 color = {1.0f,0.6f,0.4f};
+      glm::vec3 color = {0.43,0.75,0.89};
       vertices.push_back({{(x-numpoints/2)*scale,(y-numpoints/2)*scale,z},color});
     }
   }
