@@ -83,8 +83,6 @@ vec3 displace(vec3 point) {
   n += gln_GerstnerWave(p, B, 1.0).xzy * 0.5;
   n += gln_GerstnerWave(p, C, 1.0).xzy * 0.25;
   n += gln_GerstnerWave(p, D, 1.0).xzy * 0.2;
-  n += gln_GerstnerWave(p, D, 1.0).xzy * 0.1;
-  //             Must swap Y and Z Axis 👆
   return point + n;
 }
 
