@@ -57,8 +57,8 @@ void SimpleRenderSystem::createPipeline(VkRenderPass renderPass) {
   pipelineConfig.pipelineLayout = pipelineLayout;
   lvePipeline = std::make_unique<LvePipeline>(
       lveDevice,
-      "shaders/simple_shader.vert.spv",
-      "shaders/simple_shader.frag.spv",
+      "spvs/simple_shader.vert.spv",
+      "spvs/simple_shader.frag.spv",
       pipelineConfig);
 }
 
@@ -71,8 +71,8 @@ void SimpleRenderSystem::createMeshPipeline(VkRenderPass renderPass) {
   pipelineConfig.pipelineLayout = pipelineLayout;
   lveMeshPipeline = std::make_unique<LvePipeline>(
       lveDevice,
-      "shaders/noise_shader.vert.spv",
-      "shaders/diffuseLighting_shader.frag.spv",
+      "spvs/noise_shader.vert.spv",
+      "spvs/diffuseLighting_shader.frag.spv",
       pipelineConfig);
 }
 
