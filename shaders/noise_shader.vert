@@ -44,48 +44,6 @@ float snoise(vec2 v){
 }
 
 
-float gln_PI = 3.1415;
-
-struct gln_tGerstnerWaveOpts {
-    vec2 direction;   // Direction of the wave
-    float steepness;  // Steepness/Sharpness of the peaks
-    float wavelength; // Wavelength...self explnitory
-};
-
-vec3 gln_GerstnerWave(vec3 p, gln_tGerstnerWaveOpts opts, float time) {
-    float steepness = opts.steepness;
-    float wavelength = opts.wavelength;
-
-    float k = 2.0 * gln_PI / wavelength;
-    float c = sqrt(9.8 / k);
-    vec2 d = normalize(opts.direction);
-    float f = k * (dot(d, p.xy) - c * time);
-    float a = steepness / k;
-
-    return vec3(
-        d.x * (a * cos(f)),
-        a * sin(f),
-        d.y * (a * cos(f))
-    );
-}
-gln_tGerstnerWaveOpts A = gln_tGerstnerWaveOpts(vec2(0.0, -1.0), 0.5, 2.0);
-gln_tGerstnerWaveOpts B = gln_tGerstnerWaveOpts(vec2(0.0, 1.0), 0.25, 4.0);
-gln_tGerstnerWaveOpts C = gln_tGerstnerWaveOpts(vec2(1.0, 1.0), 0.15, 6.0);
-gln_tGerstnerWaveOpts D = gln_tGerstnerWaveOpts(vec2(1.0, 1.0), 0.4, 2.0);
-
-vec3 displace(vec3 point) {
-  vec3 n = vec3(0.0);
-  vec3 p = point;
-  vec3 pt = vec3(p.x,p.y+push.time*1.5,p.z);
-
-  n += snoise(pt.xy)*0.04;
-  n += gln_GerstnerWave(pt, A, 1.0).xzy;
-  n += gln_GerstnerWave(p, B, 1.0).xzy * 0.5;
-  n += gln_GerstnerWave(p, C, 1.0).xzy * 0.25;
-  n += gln_GerstnerWave(p, D, 1.0).xzy * 0.2;
-  return point + n;
-}
-
 vec2 center = vec2(0,0);
 void main() {
 

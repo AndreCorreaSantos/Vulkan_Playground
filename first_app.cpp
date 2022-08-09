@@ -173,10 +173,10 @@ std::unique_ptr<LveModel> createmeshModel(LveDevice& device, glm::vec3 offset, i
 }
 
 std::unique_ptr<LveModel> createsphereModel(LveDevice& device, glm::vec3 offset){
-  int sectorCount = 50;
-  int stackCount = 50;
+  int sectorCount = 500;
+  int stackCount = 500;
   float pi = 3.14159f;
-  float radius = 100.0f;
+  float radius = 30.0f;
   LveModel::Builder modelBuilder{};
   modelBuilder.vertices = generateSphereVertices(radius,pi,sectorCount,stackCount);
   for (auto& v : modelBuilder.vertices) {
@@ -196,7 +196,7 @@ void FirstApp::updateGameObjects(std::vector<LveGameObject>& gameObjects, float 
 }
 
 void FirstApp::loadGameObjects() {
-  int numpoints =  3000; //translation not working
+  int numpoints =  4; //translation not working
   float np = static_cast< float > (numpoints);
   float scale = 0.01f;
   std::shared_ptr<LveModel> lvemeshModel = createmeshModel(lveDevice, {.0f, .0f, .0f}, numpoints,scale);
@@ -211,7 +211,7 @@ void FirstApp::loadGameObjects() {
   sphere.model = lvesphereModel;
   sphere.transform.translation = {3.0f, 0.0f, 0.0f};
   sphere.transform.scale = {1.0f, 1.0f, 1.0f};
-  gameObjects.push_back(std::move(sphere));
+  meshObjects.push_back(std::move(sphere));
 
 }
 
