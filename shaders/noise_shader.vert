@@ -2,6 +2,7 @@
 
 layout(location = 0) in vec3 position; //xyz must be outputed as xzy
 layout(location = 1) in vec3 color;
+layout(location = 2) in vec3 normal;
 
 layout(location = 0) out vec3 fragColor;
 layout(location = 1) out vec3 outPosition; //sending position with noise to fragment shader in xyz
@@ -47,9 +48,10 @@ float snoise(vec2 v){
 vec2 center = vec2(0,0);
 void main() {
 
-  vec3 noisePosition = displace(vec3(position[0],position[1],position[2]));
+  float height = snoise(vec2(position[0],position[1]));
+  vec3 noisePosition = position+(height*(normalize(normal)));
 
-  gl_Position = push.transform*vec4(vec3(noisePosition[0],-noisePosition[2],noisePosition[1]),1.0);
+  gl_Position = push.transform*vec4( vec3(noisePosition[0],noisePosition[2],noisePosition[1]),1.0);
 
   fragColor = color;
   outPosition = vec3(noisePosition[0],noisePosition[2],noisePosition[1]);

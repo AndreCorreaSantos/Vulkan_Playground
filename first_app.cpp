@@ -97,6 +97,7 @@ std::vector<uint32_t> generateMeshIndices(int numpoints){
   return indices;
 }
 
+
 std::vector<LveModel::Vertex> generateSphereVertices(float radius,float PI,int sectorCount, int stackCount){
 std::vector<LveModel::Vertex> vertices;
 float x, y, z, xy;                              // vertex position
@@ -123,10 +124,10 @@ for(int i = 0; i <= stackCount; ++i)
         x = xy * cosf(sectorAngle);             // r * cos(u) * cos(v)
         y = xy * sinf(sectorAngle);             // r * cos(u) * sin(v)
         glm::vec3 color = {0.48,0.68,0.75};
-        vertices.push_back({{x,y,z},color});
+        vertices.push_back({{x,y,z},color,{x*lengthInv,y*lengthInv,z*lengthInv}});
     }
 }
-return vertices;
+  return vertices;
 }
 
 std::vector<uint32_t> generateMeshIndices(int sectorCount, int stackCount){
@@ -196,17 +197,17 @@ void FirstApp::updateGameObjects(std::vector<LveGameObject>& gameObjects, float 
 }
 
 void FirstApp::loadGameObjects() {
-  int numpoints =  4; //translation not working
-  float np = static_cast< float > (numpoints);
-  float scale = 0.01f;
-  std::shared_ptr<LveModel> lvemeshModel = createmeshModel(lveDevice, {.0f, .0f, .0f}, numpoints,scale);
-  auto mesh = LveGameObject::createGameObject();
-  mesh.model = lvemeshModel;
-  mesh.transform.translation = {-np*scale, -np*scale, .0f};
-  mesh.transform.scale = {1.0f, 1.0f, 1.0f};
-  meshObjects.push_back(std::move(mesh));
+  // int numpoints =  4; //translation not working
+  // float np = static_cast<float>(numpoints);
+  // float scale = 0.01f;
+  // std::shared_ptr<LveModel> lvemeshModel = createmeshModel(lveDevice, {.0f, .0f, .0f}, numpoints,scale);
+  // auto mesh = LveGameObject::createGameObject();
+  // mesh.model = lvemeshModel;
+  // mesh.transform.translation = {-np*scale, -np*scale, .0f};
+  // mesh.transform.scale = {1.0f, 1.0f, 1.0f};
+  // meshObjects.push_back(std::move(mesh));
 
-    std::shared_ptr<LveModel> lvesphereModel = createsphereModel(lveDevice, {.0f, .0f, .0f});
+  std::shared_ptr<LveModel> lvesphereModel = createsphereModel(lveDevice, {.0f, .0f, .0f});
   auto sphere = LveGameObject::createGameObject();
   sphere.model = lvesphereModel;
   sphere.transform.translation = {3.0f, 0.0f, 0.0f};
