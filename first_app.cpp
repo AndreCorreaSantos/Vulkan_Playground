@@ -174,10 +174,10 @@ std::unique_ptr<LveModel> createmeshModel(LveDevice& device, glm::vec3 offset, i
 }
 
 std::unique_ptr<LveModel> createsphereModel(LveDevice& device, glm::vec3 offset){
-  int sectorCount = 500;
-  int stackCount = 500;
+  int sectorCount = 1000;
+  int stackCount = 1000;
   float pi = 3.14159f;
-  float radius = 30.0f;
+  float radius = 3.0f;
   LveModel::Builder modelBuilder{};
   modelBuilder.vertices = generateSphereVertices(radius,pi,sectorCount,stackCount);
   for (auto& v : modelBuilder.vertices) {

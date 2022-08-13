@@ -48,8 +48,8 @@ float snoise(vec2 v){
 vec2 center = vec2(0,0);
 void main() {
 
-  float height = snoise(vec2(position[0],position[1]));
-  vec3 noisePosition = position+(height*(normalize(normal)));
+  float height = snoise(vec2(position[0]+push.time,position[1]+push.time));
+  vec3 noisePosition = position+(height/2*(normalize(normal)));
 
   gl_Position = push.transform*vec4( vec3(noisePosition[0],noisePosition[2],noisePosition[1]),1.0);
 

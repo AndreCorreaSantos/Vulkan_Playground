@@ -20,11 +20,11 @@ float cosTheta;
 vec3 deepColor = vec3(0.05,0.07,0.86);
 void main() {
   float height = position[1]+0.7;
-  vec3 color = mix(deepColor,fragColor,height);
+  //vec3 color = mix(deepColor,fragColor,height);
  //noisePosition in xyz
   vec3 tangent = dFdx(position);
   vec3 bitangent = dFdy(position);
   vec3 normal = max( normalize(cross(tangent,bitangent)),0.0);  //they are flat shaded at the moment.
   cosTheta = dot(normal,light)+ambient;
-  outColor = vec4(color*cosTheta, 1.0);
+  outColor = vec4(fragColor*cosTheta, 1.0);
 }
