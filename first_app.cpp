@@ -123,7 +123,7 @@ for(int i = 0; i <= stackCount; ++i)
         // vertex position (x, y, z)
         x = xy * cosf(sectorAngle);             // r * cos(u) * cos(v)
         y = xy * sinf(sectorAngle);             // r * cos(u) * sin(v)
-        glm::vec3 color = {0.48,0.68,0.75};
+        glm::vec3 color = {0.57,0.35,0.07};
         vertices.push_back({{x,y,z},color,{x*lengthInv,y*lengthInv,z*lengthInv}});
     }
 }
@@ -174,10 +174,10 @@ std::unique_ptr<LveModel> createmeshModel(LveDevice& device, glm::vec3 offset, i
 }
 
 std::unique_ptr<LveModel> createsphereModel(LveDevice& device, glm::vec3 offset){
-  int sectorCount = 1000;
-  int stackCount = 1000;
+  int sectorCount = 3000;
+  int stackCount = 3000;
   float pi = 3.14159f;
-  float radius = 3.0f;
+  float radius = 20.0f;
   LveModel::Builder modelBuilder{};
   modelBuilder.vertices = generateSphereVertices(radius,pi,sectorCount,stackCount);
   for (auto& v : modelBuilder.vertices) {
