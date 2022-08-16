@@ -29,17 +29,17 @@ float SmoothNoise(vec2 uv) {
 
 float SmoothNoise2(vec2 uv) {
     float c = 0;//SmoothNoise(uv*4.);
-    //float dist = clamp(length(uv),1,1000000);
+    float dist = clamp(length(uv),1,1000000);
     // don't make octaves exactly twice as small
     // this way the pattern will look more random and repeat less
     c += SmoothNoise(uv/2)*10;
+    
     //c += SmoothNoise(uv*8.2)*0.005;
     
     // c += SmoothNoise(uv*16.7)*.025;
     // c += SmoothNoise(uv*32.4)*.015;
     //c += SmoothNoise(uv*64.5)*.0625;
     
-    //c /= 2.;
     
     return c;
 }
