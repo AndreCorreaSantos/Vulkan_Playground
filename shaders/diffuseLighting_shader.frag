@@ -14,16 +14,20 @@ layout(push_constant) uniform Push {
   float time;
 } push;
 
-vec3 light = normalize(vec3(1.0,3.0,1.0)); //specified in xyz
+
+
+vec3 light = normalize(vec3(1.0,0.0,-1.0)); //specified in xyz
 const float ambient = 0.02;
 float cosTheta;
+vec3 color = fragColor;
 void main() {
+
   float height = position[2];
- //noisePosition in xyz
+ //noisePosition in xyz 
   vec3 tangent = dFdx(position);
   vec3 bitangent = dFdy(position);
   vec3 normal = max( normalize(cross(tangent,bitangent)),0.0);  //they are flat shaded at the moment.
   cosTheta = dot(normal,light)+ambient;
 
-  outColor = vec4(fragColor*cosTheta, 1.0);
+  outColor = vec4(color*cosTheta, 1.0);
 }

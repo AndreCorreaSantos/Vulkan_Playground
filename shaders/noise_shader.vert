@@ -29,15 +29,14 @@ float SmoothNoise(vec2 uv) {
 
 float SmoothNoise2(vec2 uv) {
     float c = 0;//SmoothNoise(uv*4.);
-    float dist = clamp(length(uv),1,1000000);
     // don't make octaves exactly twice as small
     // this way the pattern will look more random and repeat less
-    c += SmoothNoise(uv/2)*10;
-    
-    //c += SmoothNoise(uv*8.2)*0.005;
-    
-    // c += SmoothNoise(uv*16.7)*.025;
-    // c += SmoothNoise(uv*32.4)*.015;
+    c += SmoothNoise(uv/3)*10;
+    c += SmoothNoise(uv);
+    c += SmoothNoise(uv*8.2)*0.1;
+    c += SmoothNoise(uv*16.7)*.025;
+    c += SmoothNoise(uv*32.4)*.015;
+    c += SmoothNoise(uv*41.33)*.009;
     //c += SmoothNoise(uv*64.5)*.0625;
     
     
@@ -55,10 +54,6 @@ layout(push_constant) uniform Push {
 vec3 noisePosition;
 vec2 center = vec2(15.0,15.0);
 void main() {
-  //removing time to test lighting
-  //float dist = 1;//(1/-clamp( length(center-vec2(position[0],position[1])),1.0000,100000.0 ))-0.1;
-
-  //loat scaling = 15;
 
   float z = SmoothNoise2(vec2((position[0]),(position[1])));
   noisePosition = vec3(position[0],z,position[1]);
