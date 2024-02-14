@@ -1,6 +1,6 @@
 #pragma once
 
-#include "lve_device.hpp"
+#include "device.hpp"
 
 // libs
 #define GLM_FORCE_RADIANS
