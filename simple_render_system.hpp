@@ -1,9 +1,9 @@
 #pragma once
 
-#include "lve_camera.hpp"
-#include "lve_device.hpp"
-#include "lve_game_object.hpp"
-#include "lve_pipeline.hpp"
+#include "camera.hpp"
+#include "device.hpp"
+#include "game_object.hpp"
+#include "pipeline.hpp"
 
 // std
 #include <memory>

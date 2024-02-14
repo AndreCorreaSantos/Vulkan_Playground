@@ -1,7 +1,7 @@
 #include "first_app.hpp"
 
 #include "keyboard_movement_controller.hpp"
-#include "lve_camera.hpp"
+#include "camera.hpp"
 #include "simple_render_system.hpp"
 
 // libs
