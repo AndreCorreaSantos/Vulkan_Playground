@@ -59,17 +59,18 @@ void LvePipeline::createGraphicsPipeline(
   createShaderModule(vertCode, &vertShaderModule);
   createShaderModule(fragCode, &fragShaderModule);
 
-  VkPipelineShaderStageCreateInfo shaderStages[2];
+  VkPipelineShaderStageCreateInfo shaderStages[2]; // vertex and fragment stages for now
   shaderStages[0].sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
-  shaderStages[0].stage = VK_SHADER_STAGE_VERTEX_BIT;
+  shaderStages[0].stage = VK_SHADER_STAGE_VERTEX_BIT; //vertex shader
   shaderStages[0].module = vertShaderModule;
   shaderStages[0].pName = "main";
   shaderStages[0].flags = 0;
   shaderStages[0].pNext = nullptr;
   shaderStages[0].pSpecializationInfo = nullptr;
+
   shaderStages[1].sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
   shaderStages[1].stage = VK_SHADER_STAGE_FRAGMENT_BIT;
-  shaderStages[1].module = fragShaderModule;
+  shaderStages[1].module = fragShaderModule; // fragment shader
   shaderStages[1].pName = "main";
   shaderStages[1].flags = 0;
   shaderStages[1].pNext = nullptr;
@@ -128,12 +129,12 @@ void LvePipeline::createShaderModule(const std::vector<char>& code, VkShaderModu
 }
 
 void LvePipeline::bind(VkCommandBuffer commandBuffer) {
-  vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
+  vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline); // telling the gpu that this is a graphics and not a compute pipeline.
 }
 
 void LvePipeline::defaultPipelineConfigInfo(PipelineConfigInfo& configInfo) {
   configInfo.inputAssemblyInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
-  configInfo.inputAssemblyInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
+  configInfo.inputAssemblyInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST; // triangles will be assembled, expecting lists of 3 vertices per triangle in index buffer
   configInfo.inputAssemblyInfo.primitiveRestartEnable = VK_FALSE;
 
   configInfo.viewportInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
@@ -143,11 +144,11 @@ void LvePipeline::defaultPipelineConfigInfo(PipelineConfigInfo& configInfo) {
   configInfo.viewportInfo.pScissors = nullptr;
 
   configInfo.rasterizationInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
-  configInfo.rasterizationInfo.depthClampEnable = VK_FALSE;
+  configInfo.rasterizationInfo.depthClampEnable = VK_FALSE; // no depth culling for now
   configInfo.rasterizationInfo.rasterizerDiscardEnable = VK_FALSE;
   configInfo.rasterizationInfo.polygonMode = VK_POLYGON_MODE_FILL;
   configInfo.rasterizationInfo.lineWidth = 1.0f;
-  configInfo.rasterizationInfo.cullMode = VK_CULL_MODE_NONE;
+  configInfo.rasterizationInfo.cullMode = VK_CULL_MODE_NONE; // no culling for now
   configInfo.rasterizationInfo.frontFace = VK_FRONT_FACE_CLOCKWISE;
   configInfo.rasterizationInfo.depthBiasEnable = VK_FALSE;
   configInfo.rasterizationInfo.depthBiasConstantFactor = 0.0f;  // Optional

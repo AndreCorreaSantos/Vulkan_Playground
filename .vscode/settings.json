@@ -67,6 +67,12 @@
         "codecvt": "cpp",
         "future": "cpp",
         "valarray": "cpp",
-        "cassert": "cpp"
+        "cassert": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "ranges": "cpp",
+        "shared_mutex": "cpp",
+        "stop_token": "cpp",
+        "__nullptr": "cpp"
     }
 }
