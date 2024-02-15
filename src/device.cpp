@@ -47,7 +47,7 @@ void DestroyDebugUtilsMessengerEXT(
 }
 
 // class member functions
-LveDevice::LveDevice(LveWindow &window) : window{window} {
+LveDevice::LveDevice(LveWindow &window) : window{window} { 
   createInstance();
   setupDebugMessenger();
   createSurface();
@@ -56,7 +56,7 @@ LveDevice::LveDevice(LveWindow &window) : window{window} {
   createCommandPool();
 }
 
-LveDevice::~LveDevice() {
+LveDevice::~LveDevice() { 
   vkDestroyCommandPool(device_, commandPool, nullptr);
   vkDestroyDevice(device_, nullptr);
 

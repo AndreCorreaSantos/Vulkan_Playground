@@ -108,7 +108,7 @@ void LveModel::bind(VkCommandBuffer commandBuffer) {
   }
 }
 
-std::vector<VkVertexInputBindingDescription> LveModel::Vertex::getBindingDescriptions() {
+std::vector<VkVertexInputBindingDescription> LveModel::Vertex::getBindingDescriptions() { //vertex binding
   std::vector<VkVertexInputBindingDescription> bindingDescriptions(1);
   bindingDescriptions[0].binding = 0;
   bindingDescriptions[0].stride = sizeof(Vertex);
