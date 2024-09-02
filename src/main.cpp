@@ -1,4 +1,3 @@
-
 #include "first_app.hpp"
 
 // std

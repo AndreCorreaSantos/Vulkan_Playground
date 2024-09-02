@@ -18,7 +18,8 @@ struct SimplePushConstantData {
   alignas(16) glm::vec3 color{};
 };
 
-SimpleRenderSystem::SimpleRenderSystem(LveDevice& device, VkRenderPass renderPass)
+SimpleRenderSystem::SimpleRenderSystem(LveDevice& device,
+                                       VkRenderPass renderPass)
     : lveDevice{device} {
   createPipelineLayout();
   createPipeline(renderPass);
@@ -30,7 +31,8 @@ SimpleRenderSystem::~SimpleRenderSystem() {
 
 void SimpleRenderSystem::createPipelineLayout() {
   VkPushConstantRange pushConstantRange{};
-  pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
+  pushConstantRange.stageFlags =
+      VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
   pushConstantRange.offset = 0;
   pushConstantRange.size = sizeof(SimplePushConstantData);
 
@@ -40,29 +42,27 @@ void SimpleRenderSystem::createPipelineLayout() {
   pipelineLayoutInfo.pSetLayouts = nullptr;
   pipelineLayoutInfo.pushConstantRangeCount = 1;
   pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
-  if (vkCreatePipelineLayout(lveDevice.device(), &pipelineLayoutInfo, nullptr, &pipelineLayout) !=
-      VK_SUCCESS) {
+  if (vkCreatePipelineLayout(lveDevice.device(), &pipelineLayoutInfo, nullptr,
+                             &pipelineLayout) != VK_SUCCESS) {
     throw std::runtime_error("failed to create pipeline layout!");
   }
 }
 
 void SimpleRenderSystem::createPipeline(VkRenderPass renderPass) {
-  assert(pipelineLayout != nullptr && "Cannot create pipeline before pipeline layout");
+  assert(pipelineLayout != nullptr &&
+         "Cannot create pipeline before pipeline layout");
 
   PipelineConfigInfo pipelineConfig{};
   LvePipeline::defaultPipelineConfigInfo(pipelineConfig);
   pipelineConfig.renderPass = renderPass;
   pipelineConfig.pipelineLayout = pipelineLayout;
   lvePipeline = std::make_unique<LvePipeline>(
-      lveDevice,
-      "shaders/simple_shader.vert.spv",
-      "shaders/simple_shader.frag.spv",
-      pipelineConfig);
+      lveDevice, "shaders/simple_shader.vert.spv",
+      "shaders/simple_shader.frag.spv", pipelineConfig);
 }
 
 void SimpleRenderSystem::renderGameObjects(
-    VkCommandBuffer commandBuffer,
-    std::vector<LveGameObject>& gameObjects,
+    VkCommandBuffer commandBuffer, std::vector<LveGameObject>& gameObjects,
     const LveCamera& camera) {
   lvePipeline->bind(commandBuffer);
 
@@ -74,12 +74,9 @@ void SimpleRenderSystem::renderGameObjects(
     push.transform = projectionView * obj.transform.mat4();
 
     vkCmdPushConstants(
-        commandBuffer,
-        pipelineLayout,
-        VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
-        0,
-        sizeof(SimplePushConstantData),
-        &push);
+        commandBuffer, pipelineLayout,
+        VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0,
+        sizeof(SimplePushConstantData), &push);
     obj.model->bind(commandBuffer);
     obj.model->draw(commandBuffer);
   }
