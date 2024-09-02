@@ -12,5 +12,8 @@ VulkanEngine: $(CPP_FILES)
 test: VulkanEngine
 	./VulkanEngine
 
+format:
+	find ./ -name "*.cpp" -o -name "*.h" | xargs clang-format -i
+
 clean:
 	rm -f VulkanEngine
