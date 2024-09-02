@@ -19,6 +19,11 @@ To install `clang-format`, run the following command:
 sudo apt install clang-format
 ```
 
+To execute the formatter run:
+```
+make format
+```
+
 ### 2. Install the Necessary Dependencies
 
 #### Install the Latest NVIDIA Drivers
