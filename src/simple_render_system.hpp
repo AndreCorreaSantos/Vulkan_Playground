@@ -18,10 +18,9 @@ class SimpleRenderSystem {
   SimpleRenderSystem(const SimpleRenderSystem &) = delete;
   SimpleRenderSystem &operator=(const SimpleRenderSystem &) = delete;
 
-  void renderGameObjects(
-      VkCommandBuffer commandBuffer,
-      std::vector<LveGameObject> &gameObjects,
-      const LveCamera &camera);
+  void renderGameObjects(VkCommandBuffer commandBuffer,
+                         std::vector<LveGameObject> &gameObjects,
+                         const LveCamera &camera);
 
  private:
   void createPipelineLayout();
